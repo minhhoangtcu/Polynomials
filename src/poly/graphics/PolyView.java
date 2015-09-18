@@ -1,8 +1,28 @@
 package poly.graphics;
 
-public class PolyView {
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 
-	public PolyView(MainMenu mainMenu) {
-		// TODO Auto-generated constructor stub
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class PolyView extends JFrame {
+
+	private JPanel contentPane;
+	private MainMenu main;
+
+	/**
+	 * Create the frame.
+	 */
+	public PolyView(MainMenu main) {
+		this.main = main; 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
 	}
+
 }

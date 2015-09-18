@@ -13,7 +13,8 @@ public class MainMenu {
 	}
 	
 	public static void main(String[] args) {
-		MainMenu mainMenu = new MainMenu();
+		MainMenu main = new MainMenu();
+		main.view.setVisible(true);
 	}
 
 	
