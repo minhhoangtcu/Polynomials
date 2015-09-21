@@ -1,28 +1,18 @@
 package poly.graphics;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.BoxLayout;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
-import java.awt.CardLayout;
 import java.awt.Font;
-import java.awt.FlowLayout;
 import javax.swing.JButton;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
-import javax.swing.JList;
 import javax.swing.JTable;
-import java.awt.Insets;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 
@@ -30,6 +20,7 @@ public class PolyView extends JFrame {
 
 	private JPanel contentPane;
 	private MainMenu main;
+	private PolyController control;
 	private JTable tableData;
 	private JTextField textFieldX;
 	private JTextField textFieldY;
@@ -40,7 +31,10 @@ public class PolyView extends JFrame {
 	 * Create the frame.
 	 */
 	public PolyView(MainMenu main) {
-		this.main = main; 
+		this.main = main;
+		control = main.control;
+		
+		// Set up the main menu
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
