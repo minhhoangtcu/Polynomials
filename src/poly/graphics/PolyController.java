@@ -2,7 +2,11 @@ package poly.graphics;
 
 public class PolyController {
 	
-	public PolyController(MainMenu mainMenu) {
-		// TODO Auto-generated constructor stub
+	private MainMenu main;
+	private PolyView view;
+	
+	public PolyController(MainMenu main) {
+		this.main = main; 
+		view = main.view;
 	}
 }
