@@ -2,8 +2,26 @@ package poly.graphics;
 
 public class PolyModel {
 
+	private Object[][] tableDataColData;
+	
 	public PolyModel(MainMenu mainMenu) {
-		// TODO Auto-generated constructor stub
+		initiateRandomValues();
+	}
+	
+	public Object[][] getData() {
+		return tableDataColData;
+	}
+	
+	public String getPoly(int id) {
+		return (String) tableDataColData[id][1];
+	}
+	
+	private void initiateRandomValues() {
+		tableDataColData = new Object[2][2];
+		tableDataColData[0][0] = "1";
+		tableDataColData[1][0] = "2";
+		tableDataColData[0][1] = "test test test";
+		tableDataColData[1][1] = "test test test test";
 	}
 
 }

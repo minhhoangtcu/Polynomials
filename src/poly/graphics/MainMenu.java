@@ -7,9 +7,10 @@ public class MainMenu {
 	PolyModel model;
 	
 	public MainMenu() {
-		control = new PolyController(this);
-		view = new PolyView(this);
+		// View is initialized first.
 		model = new PolyModel(this);
+		view = new PolyView(this);
+		control = new PolyController(this);
 	}
 	
 	public static void main(String[] args) {
