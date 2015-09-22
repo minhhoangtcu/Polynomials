@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
+import java.util.Map;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -17,31 +18,42 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 
 public class PolyView extends JFrame {
-
-	private JPanel contentPane;
+	
+	// Set up references to other components
 	private MainMenu main;
-	private PolyController control;
-	private JTable tableData;
+	private PolyModel model;
+	
 	private JTextField textFieldX;
 	private JTextField textFieldY;
 	private JTextField textFieldZ;
 	private JTextField textFieldArithmeticResult;
+	private Object[] tableDataColNames;
+	private Object[][] tableDataColData;
+	
+	// A set of components that we want to give access to the controller
+	JTable tableData;
+	JButton btnSave, btnEvaluate, btnDisplay, btnDelete;
+	JPanel panelEvaluate, panelDisplay;
+	JLabel lblDisplay;
 
 	/**
 	 * Create the frame.
 	 */
-	public PolyView(MainMenu main) {
-		this.main = main;
-		control = main.control;
+	public PolyView(MainMenu mainMenu) {
+		main = mainMenu;
+		model = main.model;
 		
 		// Set up the main menu
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[774px]", "[96.00px][219.00px][139.00px]"));
 		
+		
+		
+		// INPUT SECTION
 		JPanel input = new JPanel();
 		contentPane.add(input, "cell 0 0,grow");
 		input.setLayout(new BorderLayout(0, 0));
@@ -67,13 +79,17 @@ public class PolyView extends JFrame {
 		panelInput.add(textFieldPolyInput, "cell 0 1,alignx right,aligny center");
 		textFieldPolyInput.setColumns(80);
 		
-		JButton btnSave = new JButton("Save");
+		btnSave = new JButton("Save");
 		panelInput.add(btnSave, "cell 1 1,alignx left,aligny top");
 		
 		JPanel output = new JPanel();
 		contentPane.add(output, "cell 0 1,grow");
 		output.setLayout(new BorderLayout(0, 0));
 		
+		
+		
+		//DATABASE SECTION
+		// DATABASE> LEFT SIDE
 		JLabel lblDatabase = new JLabel("DATABASE");
 		lblDatabase.setOpaque(true);
 		lblDatabase.setBackground(Color.LIGHT_GRAY);
@@ -81,9 +97,10 @@ public class PolyView extends JFrame {
 		lblDatabase.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		output.add(lblDatabase, BorderLayout.NORTH);
 		
-		Object[] tableDataColNames = {"ID", "Polynomials"};
-		Object[][] tableDataColData = {{"1", "testtest"},
-									   {"2", "test"}};
+		tableDataColNames = new Object[2];
+		tableDataColNames[0] = "ID";
+		tableDataColNames[1] = "Polynomials";
+		tableDataColData = model.getData();	
 		
 		JPanel panelData = new JPanel();
 		output.add(panelData, BorderLayout.CENTER);
@@ -95,6 +112,8 @@ public class PolyView extends JFrame {
 		JScrollPane scrollData = new JScrollPane(tableData);
 		panelData.add(scrollData);
 		
+		
+		// DATABASE> RIGHT SIDE
 		JPanel panelDatabaseCommands = new JPanel();
 		panelData.add(panelDatabaseCommands);
 		panelDatabaseCommands.setLayout(new MigLayout("", "[89.00px][73.00px][133.00px][92.00px]", "[34px][23px][33px][34.00px][]"));
@@ -108,24 +127,26 @@ public class PolyView extends JFrame {
 		panelDatabaseCommands.add(panelCommands, "cell 0 1 4 1,alignx center,aligny top");
 		panelCommands.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JButton btnDelete = new JButton("Delete");
+		btnDelete = new JButton("Delete");
 		panelCommands.add(btnDelete);
 		
-		JButton btnDisplay = new JButton("Display");
+		btnDisplay = new JButton("Display");
 		panelCommands.add(btnDisplay);
 		
-		JButton btnEvaluate = new JButton("Evaluate");
+		btnEvaluate = new JButton("Evaluate");
 		panelCommands.add(btnEvaluate);
 		
-		JPanel panelDisplay = new JPanel();
+		panelDisplay = new JPanel();
 		panelDatabaseCommands.add(panelDisplay, "cell 0 2 4 1,alignx center,aligny center");
+		panelDisplay.setVisible(false);
 		
-		JLabel lblDisplay = new JLabel("Displaying: ");
+		lblDisplay = new JLabel("Displaying: ");
 		panelDisplay.add(lblDisplay);
 		
-		JPanel panelEvaluate = new JPanel();
+		panelEvaluate = new JPanel();
 		panelDatabaseCommands.add(panelEvaluate, "cell 0 3 4 1,alignx center,aligny top");
 		panelEvaluate.setLayout(new GridLayout(0, 1, 0, 0));
+		panelEvaluate.setVisible(false);
 		
 		JPanel panelInputXYZ = new JPanel();
 		panelEvaluate.add(panelInputXYZ);
@@ -157,6 +178,9 @@ public class PolyView extends JFrame {
 		JButton btnNewButton = new JButton("Save Database");
 		panelDatabaseCommands.add(btnNewButton, "cell 2 4 1 1,alignx center,aligny top");
 		
+		
+		
+		// ARITHMETIC SECTION
 		JPanel arithmetic = new JPanel();
 		contentPane.add(arithmetic, "cell 0 2,grow");
 		arithmetic.setLayout(new MigLayout("", "[760px]", "[63.00px][69.00px][108.00px]"));
