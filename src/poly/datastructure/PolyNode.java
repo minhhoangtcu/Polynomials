@@ -2,6 +2,10 @@ package poly.datastructure;
 
 public class PolyNode implements PolyNodeInterface {
 
+	public PolyNode() {
+		
+	}
+	
 	@Override
 	public int getCoeff() {
 		// TODO Auto-generated method stub
