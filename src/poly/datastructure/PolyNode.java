@@ -1,6 +1,15 @@
 package poly.datastructure;
 
 public class PolyNode implements PolyNodeInterface {
+	
+	private int coeff, xPower, yPower, zPower;
+	
+	public void PolyNode(int coeff, int xPower, int yPower, int zPower) {
+		this.coeff = coeff;
+		this.xPower = xPower;
+		this.yPower = yPower;
+		this.zPower = zPower;
+	}
 
 	public PolyNode() {
 		
@@ -8,62 +17,56 @@ public class PolyNode implements PolyNodeInterface {
 	
 	@Override
 	public int getCoeff() {
-		// TODO Auto-generated method stub
-		return 0;
+		return coeff;
 	}
 
 	@Override
 	public void setCoeff(int c) {
-		// TODO Auto-generated method stub
-		
+		coeff = c;
 	}
 
 	@Override
 	public int getXPower() {
-		// TODO Auto-generated method stub
-		return 0;
+		return xPower;
 	}
 
 	@Override
 	public void setXPower(int ix) {
-		// TODO Auto-generated method stub
+		xPower = ix;
 		
 	}
 
 	@Override
 	public int getYPower() {
-		// TODO Auto-generated method stub
-		return 0;
+		return yPower;
 	}
 
 	@Override
 	public void setYPower(int iy) {
-		// TODO Auto-generated method stub
-		
+		yPower = iy;
 	}
 
 	@Override
 	public int getZPower() {
-		// TODO Auto-generated method stub
-		return 0;
+		return zPower;
 	}
 
 	@Override
 	public void setZPower(int iz) {
-		// TODO Auto-generated method stub
-		
+		zPower = iz;
 	}
 
 	@Override
 	public PolyNode getPtr() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public void setPtr(PolyNode p) {
-		// TODO Auto-generated method stub
-		
+		coeff = p.coeff;
+		xPower = p.xPower;
+		yPower = p.yPower;
+		zPower = p.zPower;
 	}
 
 }
