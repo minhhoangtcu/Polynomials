@@ -35,6 +35,8 @@
 * Protocol for PolyNodeInterface
 * @author James Comer
 */
+package poly.datastructure;
+
 public interface PolyNodeInterface {
 	//Method signatures
 	public int getCoeff();
