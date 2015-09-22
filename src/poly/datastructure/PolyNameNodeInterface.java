@@ -23,6 +23,9 @@
 * Protocol for PolyNameNodeInterface
 * @author James Comer
 */
+
+package poly.datastructure;
+
 public interface PolyNameNodeInterface {
 	//Method signatures
 	public String getPolyName();
