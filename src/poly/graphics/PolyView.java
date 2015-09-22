@@ -8,7 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
-import java.util.Map;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
