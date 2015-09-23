@@ -3,36 +3,11 @@ package poly.graphics;
 public class PolyModel {
 
 	private Object[][] tableDataColData;
-	PolyView view;
 	MainMenu main;
 	
 	public PolyModel(MainMenu mainMenu) {
 		initiateRandomValues();
 		main = mainMenu;
-		view = main.view;
-	}
-	
-	public void turnEvaluationPanel() {
-		boolean isVisible = view.panelEvaluate.isVisible();
-		if (isVisible) view.panelEvaluate.setVisible(false);
-		else view.panelEvaluate.setVisible(true);
-	}
-	
-	/*
-	 * Turn on the display polynomial label in database section.
-	 */
-	public void turnDbDisplayLabel() {
-		view.panelDisplay.setVisible(true);
-	}
-	
-	public void setDbDisplayPoly() {
-		int id = view.tableData.getSelectedRow();
-		String poly = getPoly(id);
-		view.lblDisplay.setText("Displaying: " + poly);
-	}
-	
-	public void setDbDisplayError() {
-		view.lblDisplay.setText("Please select a polynomial from the left.");
 	}
 	
 	public Object[][] getData() {
