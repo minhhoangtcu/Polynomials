@@ -33,7 +33,7 @@ public class PolyView extends JFrame {
 	JTable tableData;
 	JButton btnSave, btnEvaluate, btnDisplay, btnDelete;
 	JPanel panelEvaluate, panelDisplay;
-	JLabel lblDisplay;
+	JLabel lblDisplay, lblArithFeedback, lblInputFeedback;
 
 	/**
 	 * Create the frame.
@@ -81,7 +81,8 @@ public class PolyView extends JFrame {
 		btnSave = new JButton("Save");
 		panelInput.add(btnSave, "cell 1 1,alignx left,aligny top");
 		
-		JLabel lblInputFeedback = new JLabel("Feedback");
+		lblInputFeedback = new JLabel("Feedback");
+		lblInputFeedback.setVisible(false);
 		lblInputFeedback.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panelInput.add(lblInputFeedback, "cell 0 2 2 1,alignx center");
 		lblInputFeedback.setHorizontalAlignment(SwingConstants.CENTER);
@@ -224,7 +225,8 @@ public class PolyView extends JFrame {
 		arithmetic.add(textFieldArithmeticResult, "cell 0 2,grow");
 		textFieldArithmeticResult.setColumns(10);
 		
-		JLabel lblArithFeedback = new JLabel("Feedback");
+		lblArithFeedback = new JLabel("Feedback");
+		lblArithFeedback.setVisible(false);
 		lblArithFeedback.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		arithmetic.add(lblArithFeedback, "cell 0 3,alignx center,aligny center");
 	}
