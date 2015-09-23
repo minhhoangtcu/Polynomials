@@ -48,7 +48,7 @@ public class PolyView extends JFrame {
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[774px]", "[96.00px][219.00px][139.00px]"));
+		contentPane.setLayout(new MigLayout("", "[774px]", "[130.00px][219.00px][172.00px]"));
 		
 		
 		
@@ -66,7 +66,7 @@ public class PolyView extends JFrame {
 		
 		JPanel panelInput = new JPanel();
 		input.add(panelInput, BorderLayout.CENTER);
-		panelInput.setLayout(new MigLayout("", "[684.00px][100.00px]", "[20px][23px]"));
+		panelInput.setLayout(new MigLayout("", "[684.00px][100.00px]", "[20px][23px][21.00]"));
 		
 		JLabel lblInputInstruction = new JLabel("Please insert the polynomials in the form of: x^2*y^5*z^10");
 		lblInputInstruction.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -80,6 +80,11 @@ public class PolyView extends JFrame {
 		
 		btnSave = new JButton("Save");
 		panelInput.add(btnSave, "cell 1 1,alignx left,aligny top");
+		
+		JLabel lblInputFeedback = new JLabel("Feedback");
+		lblInputFeedback.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panelInput.add(lblInputFeedback, "cell 0 2 2 1,alignx center");
+		lblInputFeedback.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JPanel output = new JPanel();
 		contentPane.add(output, "cell 0 1,grow");
@@ -182,7 +187,7 @@ public class PolyView extends JFrame {
 		// ARITHMETIC SECTION
 		JPanel arithmetic = new JPanel();
 		contentPane.add(arithmetic, "cell 0 2,grow");
-		arithmetic.setLayout(new MigLayout("", "[760px]", "[63.00px][69.00px][108.00px]"));
+		arithmetic.setLayout(new MigLayout("", "[760px]", "[][][71.00px][]"));
 		
 		JLabel lblArithmetic = new JLabel("Arithmetic");
 		lblArithmetic.setBackground(Color.LIGHT_GRAY);
@@ -218,5 +223,9 @@ public class PolyView extends JFrame {
 		textFieldArithmeticResult = new JTextField();
 		arithmetic.add(textFieldArithmeticResult, "cell 0 2,grow");
 		textFieldArithmeticResult.setColumns(10);
+		
+		JLabel lblArithFeedback = new JLabel("Feedback");
+		lblArithFeedback.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		arithmetic.add(lblArithFeedback, "cell 0 3,alignx center,aligny center");
 	}
 }

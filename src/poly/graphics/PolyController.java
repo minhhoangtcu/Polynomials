@@ -6,8 +6,8 @@ import java.awt.event.MouseListener;
 public class PolyController implements MouseListener {
 	
 	private MainMenu main;
-	private PolyView view;
-	private PolyModel model;
+	private PolyView view; // Controller do not modify the view. It only get data from the view.
+	private PolyModel model; // To change the view. Controller must tell the model to do so.
 	
 	public PolyController(MainMenu mainMenu) {
 		main = mainMenu; 
@@ -22,25 +22,19 @@ public class PolyController implements MouseListener {
 	 * Turn on and off the evaluation panel
 	 */
 	private void evaluate() {
-		boolean isVisible = view.panelEvaluate.isVisible();
-		if (isVisible) view.panelEvaluate.setVisible(false);
-		else view.panelEvaluate.setVisible(true);
+		model.turnEvaluationPanel();
 	}
 	
 	/*
 	 * Display the appropriate polynomial selected in the table.
 	 */
 	private void display() {
-		view.panelDisplay.setVisible(true);
+		model.turnDbDisplayLabel();
 		boolean isSelected = view.tableData.getSelectedRow() != -1; 
-		if (isSelected) {
-			int id = view.tableData.getSelectedRow();
-			String poly = model.getPoly(id);
-			view.lblDisplay.setText("Displaying: " + poly);
-		}
-		else {
-			view.lblDisplay.setText("Please select a polynomial from the left.");
-		}
+		if (isSelected)
+			model.setDbDisplayPoly();
+		else
+			model.setDbDisplayError();
 	}
 
 	@Override
