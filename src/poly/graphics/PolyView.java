@@ -1,3 +1,6 @@
+/*
+ * The view is the front-end.
+ */
 package poly.graphics;
 
 import java.awt.BorderLayout;

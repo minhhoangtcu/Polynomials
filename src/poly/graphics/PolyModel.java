@@ -1,3 +1,6 @@
+/*
+ * The Model contains data and manipulation methods.
+ */
 package poly.graphics;
 
 public class PolyModel {

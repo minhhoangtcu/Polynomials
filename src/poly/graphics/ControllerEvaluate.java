@@ -19,8 +19,7 @@ public class ControllerEvaluate implements MouseListener{
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		Object event = e.getSource();
-		if (event.equals(view.btnEvaluate)) turnEvaluationPanel();		
+		turnEvaluationPanel();		
 	}
 
 	@Override

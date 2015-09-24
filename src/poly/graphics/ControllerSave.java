@@ -5,10 +5,16 @@ import java.awt.event.MouseListener;
 
 public class ControllerSave implements MouseListener {
 
+	private PolyView view;
+	
+	public ControllerSave(PolyView view) {
+		this.view = view;
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		view.lblInputFeedback.setVisible(true);
+		view.lblInputFeedback.setText("Underconstruction");
 	}
 
 	@Override
