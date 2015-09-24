@@ -44,8 +44,7 @@ public class ControllerDisplay implements MouseListener{
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		Object event = e.getSource();
-		if (event.equals(view.btnDisplay)) display();
+		display();
 	}
 
 	@Override

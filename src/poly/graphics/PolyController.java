@@ -1,3 +1,6 @@
+/*
+ * The controller assigns listeners to various GUI components.
+ */
 package poly.graphics;
 
 public class PolyController {
@@ -13,7 +16,8 @@ public class PolyController {
 		main = mainMenu; 
 		view = main.view;
 		model = main.model;
-		conSave = new ControllerSave();
+		
+		conSave = new ControllerSave(view);
 		conEvaluate = new ControllerEvaluate(view);
 		conDisplay = new ControllerDisplay(model, view);
 		
