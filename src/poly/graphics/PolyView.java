@@ -35,9 +35,9 @@ public class PolyView extends JFrame {
 	
 	// A set of components that we want to give access to the controller
 	JTable tableData;
-	JButton btnSave, btnEvaluate, btnDisplay, btnDelete;
+	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb;
 	JPanel panelEvaluate, panelDisplay;
-	JLabel lblDisplay, lblArithFeedback, lblInputFeedback;
+	JLabel lblDisplay, lblArithFeedback, lblInputFeedback, labelIOFeedback;
 
 	/**
 	 * Create the frame.
@@ -52,7 +52,7 @@ public class PolyView extends JFrame {
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[774px]", "[130.00px][219.00px][172.00px]"));
+		contentPane.setLayout(new MigLayout("", "[774px]", "[130.00px][285.00px][172.00px]"));
 		
 		
 		
@@ -125,7 +125,7 @@ public class PolyView extends JFrame {
 		// DATABASE> RIGHT SIDE
 		JPanel panelDatabaseCommands = new JPanel();
 		panelData.add(panelDatabaseCommands);
-		panelDatabaseCommands.setLayout(new MigLayout("", "[89.00px][73.00px][133.00px][92.00px]", "[34px][23px][33px][34.00px][]"));
+		panelDatabaseCommands.setLayout(new MigLayout("", "[89.00px][73.00px][133.00px][92.00px]", "[34px][23px][33px][34.00px][][20.00]"));
 		
 		JLabel lblDataCommandsInstruction = new JLabel("<html><center>Please choose a polynomial from the list on the left and<br> choose the following command</center></html>");
 		lblDataCommandsInstruction.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -181,12 +181,15 @@ public class PolyView extends JFrame {
 		JLabel lblResult = new JLabel("Result: ");
 		panelEvaluate.add(lblResult);
 		
-		JButton btnLoadDatabase = new JButton("Load Database");
-		panelDatabaseCommands.add(btnLoadDatabase, "cell 1 4 1 1,alignx center,aligny top");
+		btnLoadDb = new JButton("Load Database");
+		panelDatabaseCommands.add(btnLoadDb, "cell 1 4 1 1,alignx center,aligny top");
 		
-		JButton btnNewButton = new JButton("Save Database");
-		panelDatabaseCommands.add(btnNewButton, "cell 2 4 1 1,alignx center,aligny top");
+		btnSaveDb = new JButton("Save Database");
+		panelDatabaseCommands.add(btnSaveDb, "cell 2 4 1 1,alignx center,aligny top");
 		
+		labelIOFeedback = new JLabel("Feedback");
+		panelDatabaseCommands.add(labelIOFeedback, "cell 0 5 4 1,alignx center,aligny center");
+		labelIOFeedback.setVisible(false);
 		
 		
 		// ARITHMETIC SECTION
