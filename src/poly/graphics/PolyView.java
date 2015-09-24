@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class PolyView extends JFrame {
 	
 	// Set up references to other components
@@ -206,13 +207,13 @@ public class PolyView extends JFrame {
 		JLabel lblChooseFirstPolynomial = new JLabel("Choose first polynomial");
 		panelArithmeticDecision.add(lblChooseFirstPolynomial);
 		
-		JComboBox comboBoxFirst = new JComboBox();
+		JComboBox<String> comboBoxFirst = new JComboBox<String>();
 		panelArithmeticDecision.add(comboBoxFirst);
 		
 		JLabel lblChooseSecondPolynomial = new JLabel("Choose second polynomial");
 		panelArithmeticDecision.add(lblChooseSecondPolynomial);
 		
-		JComboBox comboBoxSecond = new JComboBox();
+		JComboBox<String> comboBoxSecond = new JComboBox<String>();
 		panelArithmeticDecision.add(comboBoxSecond);
 		
 		JButton btnAdd = new JButton("Add");

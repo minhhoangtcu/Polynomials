@@ -4,7 +4,7 @@ public class PolyNode implements PolyNodeInterface {
 	
 	private int coeff, xPower, yPower, zPower;
 	
-	public void PolyNode(int coeff, int xPower, int yPower, int zPower) {
+	public PolyNode(int coeff, int xPower, int yPower, int zPower) {
 		this.coeff = coeff;
 		this.xPower = xPower;
 		this.yPower = yPower;
