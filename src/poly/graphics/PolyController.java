@@ -11,6 +11,7 @@ public class PolyController {
 	private ControllerSave conSave;
 	private ControllerEvaluate conEvaluate;
 	private ControllerDisplay conDisplay;
+	private ControllerLoad conLoad;
 	
 	public PolyController(MainMenu mainMenu) {
 		main = mainMenu; 
@@ -20,9 +21,11 @@ public class PolyController {
 		conSave = new ControllerSave(view);
 		conEvaluate = new ControllerEvaluate(view);
 		conDisplay = new ControllerDisplay(model, view);
+		conLoad = new ControllerLoad(model, view);
 		
 		view.btnSave.addMouseListener(conSave);
 		view.btnEvaluate.addMouseListener(conEvaluate);	
 		view.btnDisplay.addMouseListener(conDisplay);
+		view.btnLoadDb.addMouseListener(conLoad);
 	}
 }
