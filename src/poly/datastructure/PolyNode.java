@@ -3,18 +3,16 @@ package poly.datastructure;
 public class PolyNode implements PolyNodeInterface {
 	
 	private int coeff, xPower, yPower, zPower;
+	private PolyNode next;
 	
 	public PolyNode(int coeff, int xPower, int yPower, int zPower) {
 		this.coeff = coeff;
 		this.xPower = xPower;
 		this.yPower = yPower;
 		this.zPower = zPower;
+		next = null;
 	}
 
-	public PolyNode() {
-		
-	}
-	
 	@Override
 	public int getCoeff() {
 		return coeff;
@@ -69,4 +67,11 @@ public class PolyNode implements PolyNodeInterface {
 		zPower = p.zPower;
 	}
 
+	public PolyNode next() {
+		return next;
+	}
+	
+	public void setNext(PolyNode p) {
+		next = p;
+	}
 }

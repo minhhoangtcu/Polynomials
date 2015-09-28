@@ -2,40 +2,45 @@ package poly.datastructure;
 
 public class PolyNameNode implements PolyNameNodeInterface {
 
+	String name;
+	String polynomial;
+	PolyNameNode downNode;
+	PolyNode rightNode;
+	
+	public PolyNameNode(String name, String polynomial) {
+		this.name = name;
+		this.polynomial = polynomial;
+		downNode = null;
+		rightNode = null;
+	}
+	
 	@Override
 	public String getPolyName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
 	public void setPolyName(String s) {
-		// TODO Auto-generated method stub
-		
+		name = s;
 	}
 
 	@Override
 	public PolyNameNode getDownPtr() {
-		// TODO Auto-generated method stub
-		return null;
+		return downNode;
 	}
 
 	@Override
 	public void setDownPtr(PolyNameNode p) {
-		// TODO Auto-generated method stub
-		
+		downNode = p;
 	}
 
 	@Override
 	public PolyNode getRightPtr() {
-		// TODO Auto-generated method stub
-		return null;
+		return rightNode;
 	}
 
 	@Override
 	public void setRightPtr(PolyNode p) {
-		// TODO Auto-generated method stub
-		
+		rightNode = p;
 	}
-
 }
