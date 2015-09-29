@@ -9,14 +9,14 @@ public class PolyNameNode implements PolyNameNodeInterface {
 	String name;
 	String polynomial;
 	PolyNameNode downNode;
-	PolyNode firstNode;
-	PolyNode lastNode;
+	PolyNode firstRightNode;
+	PolyNode lastRightNode;
 	
 	public PolyNameNode(String name, String polynomial) {
 		this.name = name;
 		this.polynomial = polynomial;
 		downNode = null;
-		firstNode = null;
+		firstRightNode = null;
 	}
 	
 	@Override
@@ -41,23 +41,23 @@ public class PolyNameNode implements PolyNameNodeInterface {
 
 	@Override
 	public PolyNode getRightPtr() {
-		return firstNode;
+		return firstRightNode;
 	}
 
 	@Override
 	public void setRightPtr(PolyNode p) {
-		firstNode = p;
+		firstRightNode = p;
 	}
 	
 	/*
 	 * Add new node to the list.
 	 */
 	public void addNode(PolyNode p) {
-		if (firstNode == null)
-			firstNode = p;
+		if (firstRightNode == null)
+			firstRightNode = p;
 		else
-			lastNode.nextNode = p;
-		lastNode = p;
-		p.nextNode = firstNode;
+			lastRightNode.nextNode = p;
+		lastRightNode = p;
+		p.nextNode = firstRightNode;
 	}
 }
