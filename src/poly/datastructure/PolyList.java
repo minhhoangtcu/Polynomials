@@ -23,17 +23,26 @@ public class PolyList {
 	 * If this is the first Node in the list, we point the variable firstNode to it.
 	 * If this is not the first Node in the list (!=null), we point the next variable from the firstNode to it.
 	 */
-	protected void addNode(String polynomial) throws IllegalArgumentException {
+	protected void addNode(String name, String polynomial) throws IllegalArgumentException {
+		checkAllPolynomials(polynomial); //The program will continue if no error found, else it will throw error.
 		
-		Pattern pat = Pattern.compile(" (+|-) ");
-		Matcher mat = pat.matcher(polynomial);
+		StringTokenizer st = new StringTokenizer(polynomial, "(+|-)");
+		int numberOfPolys = st.countTokens();
 		
-		// If there is a + or - sign in the program (more than 1 polynomial), we process as follow.
-		if (mat.matches()) {
-			
+		//Create the first Name Node
+		PolyNameNode nameNode = new PolyNameNode(name, polynomial);
+		if (firstNode == null) {
+			firstNode = nameNode;
+			lastNode = nameNode;
 		}
-		// If there is only 1 polynomial, we process as follow.
 		else {
+			nameNode.downNode = firstNode;
+			lastNode.downNode = nameNode;
+			lastNode = nameNode;
+		}
+		
+		//Create the poly nodes (right nodes) for the Name Node
+		for (int i = 0; i < numberOfPolys; i++) {
 			
 		}
 	}
@@ -42,10 +51,10 @@ public class PolyList {
 	 * Create a PolyNode from the provided String
 	 */
 	protected PolyNode getPolyNode(String polynomial) throws IllegalArgumentException {
-		checkComponents(polynomial); //The program will continue if no error found, else it will throw error.
-		StringTokenizer st = new StringTokenizer(polynomial, "*");
+		checkPolynomial(polynomial); //The program will continue if no error found, else it will throw error.
 		
-		int coeff = Integer.parseInt(st.nextToken());
+		StringTokenizer st = new StringTokenizer(polynomial, "*");
+				int coeff = Integer.parseInt(st.nextToken());
 		String component = st.nextToken();
 		int xPower = Integer.parseInt(component.split("\\^")[1]);
 		component = st.nextToken();
@@ -61,26 +70,49 @@ public class PolyList {
 	 * Check if the String input is a valid polynomial or not
 	 */
 	protected boolean isValid(String polynomial) {
-		try {
-			checkComponents(polynomial);
-		} catch (IllegalArgumentException e) {
-			System.err.println(e.getMessage());
-			return false;
+		StringTokenizer st = new StringTokenizer(polynomial, "(+|-)");
+		int numberOfPolys = st.countTokens();
+		
+		for (int i = 0; i < numberOfPolys; i++) {
+			String eachPoly = st.nextToken().trim();
+			try {
+				checkPolynomial(eachPoly);
+			} catch (IllegalArgumentException e) {
+				System.err.println(e.getMessage());
+				return false;
+			}
 		}
 		return true;
 	}
 	
 	/*
-	 * Check the validity of the input as polynomial
-	 * We check each components of the polynomials by the asterisk "*" 
-	 * If there are 4 components (the coeff, x, y, z), then pass.
-	 * Next, we need to check if each components if they follow the correct format or not.
+	 * Check the validity of the input as many polynomials (a series of them)
 	 */
-	protected void checkComponents(String polynomial) throws IllegalArgumentException {
-		StringTokenizer st = new StringTokenizer(polynomial, "*");
-		int numberOfComponants = st.countTokens();
+	protected void checkAllPolynomials(String polynomial) throws IllegalArgumentException {
+		StringTokenizer st = new StringTokenizer(polynomial, "(+|-)");
+		int numberOfPolys = st.countTokens();
 		
-		if (numberOfComponants == 4) {
+		for (int i = 0; i < numberOfPolys; i++) {
+			String eachPoly = st.nextToken().trim();
+			checkPolynomial(eachPoly);
+		}
+	}
+	
+	/*
+	 * Check the validity of the input as a polynomial
+	 * First, we need to check if there is more than one * together or not.
+	 * Then, we check separate each components of the polynomials by the asterisk "*" and check them. 
+	 * If there are 4 components (the coeff, x, y, z), then pass.
+	 * Next, we need to check if each components if they follow the correct format or not: the variable must be x, y, and z accordingly. The power must be a valid integer. Also, we must not have multiple ^^
+	 */
+	protected void checkPolynomial(String polynomial) throws IllegalArgumentException {
+		if (polynomial.matches(".*\\*{2,}.*")) { // If find more than one "*" together
+			throw new IllegalArgumentException("Cannot have two * together, please enter the input in the right format."); 
+		}
+		StringTokenizer st = new StringTokenizer(polynomial, "*");
+		int numberOfComponents = st.countTokens();
+		
+		if (numberOfComponents == 4) {
 			// Check the coeff
 			try {
 				Integer.parseInt(st.nextToken());

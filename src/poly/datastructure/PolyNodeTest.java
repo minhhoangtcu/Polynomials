@@ -20,6 +20,12 @@ public class PolyNodeTest extends PolyList {
 	@Test
 	public void testValidity() {
 		assertTrue(isValid("6*x^4*y^5*z^3"));
+		assertTrue(isValid("6*x^4*y^5*z^3 + 6*x^4*y^5*z^3"));
+		assertTrue(isValid("6*x^4*y^5*z^3 + 6*x^4*y^5*z^3 - 6*x^4*y^5*z^3"));
+		assertTrue(isValid("6*x^4*y^5*z^3+6*x^4*y^5*z^3-6*x^4*y^5*z^3"));
+		assertFalse(isValid("6*x^4*y^5*z^3 + 6*x^4*y^5*z^3 + 6*z^4*y^5*z^3"));
+		assertTrue(isValid("6*x^4*y^5*z^3"));
+		assertTrue(isValid("6*x^4*y^5*z^3"));
 		assertFalse(isValid("s*x^4*y^5*z^3"));
 		assertFalse(isValid("6*z^4*y^5*z^3"));
 		assertFalse(isValid("123123145*x^x*y^5*z^3"));
@@ -37,6 +43,7 @@ public class PolyNodeTest extends PolyList {
 		assertFalse(isValid("6*x^4*y^5*z^^^3"));
 		assertFalse(isValid("6*x^4*y^5*z^^^3"));
 		assertFalse(isValid("6***x^4****y^5*z^^^3"));
+		assertFalse(isValid("6***x^4****y^5*z^3"));
 	}
 
 }
