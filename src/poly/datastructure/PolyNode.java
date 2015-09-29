@@ -78,4 +78,10 @@ public class PolyNode implements PolyNodeInterface {
 	public String toString() {
 		return String.format("%d*x^%d*y^%d*z^%d", coeff, xPower, yPower, zPower);
 	}
+	
+	public boolean isEquals(PolyNode p) {
+		if (coeff == p.coeff && xPower == p.xPower && yPower == p.yPower && zPower == p.zPower)
+			return true;
+		else return false;
+	}
 }
