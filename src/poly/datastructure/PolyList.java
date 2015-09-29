@@ -23,7 +23,7 @@ public class PolyList {
 	 * If this is the first Node in the list, we point the variable firstNode to it.
 	 * If this is not the first Node in the list (!=null), we point the next variable from the firstNode to it.
 	 */
-	protected void addNode(String polynomial) {
+	protected void addNode(String polynomial) throws IllegalArgumentException {
 		
 		Pattern pat = Pattern.compile(" (+|-) ");
 		Matcher mat = pat.matcher(polynomial);
@@ -41,14 +41,25 @@ public class PolyList {
 	/* 
 	 * Create a PolyNode from the provided String
 	 */
-	protected PolyNode getPolyNode(String polynomial) {
+	protected PolyNode getPolyNode(String polynomial) throws IllegalArgumentException {
+		checkComponents(polynomial); //The program will continue if no error found, else it will throw error.
 		StringTokenizer st = new StringTokenizer(polynomial, "*");
 		
+		int coeff = Integer.parseInt(st.nextToken());
+		String component = st.nextToken();
+		int xPower = Integer.parseInt(component.split("\\^")[1]);
+		component = st.nextToken();
+		int yPower = Integer.parseInt(component.split("\\^")[1]);
+		component = st.nextToken();
+		int zPower = Integer.parseInt(component.split("\\^")[1]);
 		
-		PolyNode node = new PolyNode(0, 0, 0, 0);
+		PolyNode node = new PolyNode(coeff, xPower, yPower, zPower);
 		return node;
 	}
 
+	/*
+	 * Check if the String input is a valid polynomial or not
+	 */
 	protected boolean isValid(String polynomial) {
 		try {
 			checkComponents(polynomial);

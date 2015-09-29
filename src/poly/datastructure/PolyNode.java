@@ -74,4 +74,8 @@ public class PolyNode implements PolyNodeInterface {
 	public void setNext(PolyNode p) {
 		next = p;
 	}
+	
+	public String toString() {
+		return String.format("%d*x^%d*y^%d*z^%d", coeff, xPower, yPower, zPower);
+	}
 }
