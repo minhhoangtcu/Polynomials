@@ -9,7 +9,14 @@ public class PolyNodeTest extends PolyList {
 	PolyList list;
 	
 	@Test
-	public void testPoly() {
+	public void testAddPoly() {
+		list = new PolyList();
+		list.addNode("a", "6*x^4*y^5*z^3");
+		System.out.println(list.firstNode.firstRightNode.toString());
+	}
+	
+	@Test
+	public void testGetPolyNode() {
 		assertTrue("6*x^4*y^5*z^3".equals(getPolyNode("6*x^4*y^5*z^3").toString()));
 		assertTrue("9*x^3*y^8*z^1".equals(getPolyNode("9*x^3*y^8*z^1").toString()));
 		assertTrue("10*x^2*y^126*z^1234123".equals(getPolyNode("10*x^2*y^126*z^1234123").toString()));

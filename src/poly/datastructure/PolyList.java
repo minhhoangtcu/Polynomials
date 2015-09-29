@@ -8,7 +8,7 @@ import org.junit.internal.Throwables;
 
 public class PolyList {
 	
-	private PolyNameNode firstNode, lastNode;
+	PolyNameNode firstNode, lastNode;
 	
 	public PolyList() {
 		firstNode = null;
