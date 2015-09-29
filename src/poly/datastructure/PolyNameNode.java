@@ -1,17 +1,22 @@
 package poly.datastructure;
 
+/*
+ * A node containing raw String file of the polynomial and the name.
+ * This also act as a circular list (containing the first and last nodes references)
+ */
 public class PolyNameNode implements PolyNameNodeInterface {
 
 	String name;
 	String polynomial;
 	PolyNameNode downNode;
-	PolyNode rightNode;
+	PolyNode firstNode;
+	PolyNode lastNode;
 	
 	public PolyNameNode(String name, String polynomial) {
 		this.name = name;
 		this.polynomial = polynomial;
 		downNode = null;
-		rightNode = null;
+		firstNode = null;
 	}
 	
 	@Override
@@ -36,11 +41,23 @@ public class PolyNameNode implements PolyNameNodeInterface {
 
 	@Override
 	public PolyNode getRightPtr() {
-		return rightNode;
+		return firstNode;
 	}
 
 	@Override
 	public void setRightPtr(PolyNode p) {
-		rightNode = p;
+		firstNode = p;
+	}
+	
+	/*
+	 * Add new node to the list.
+	 */
+	public void addNode(PolyNode p) {
+		if (firstNode == null)
+			firstNode = p;
+		else
+			lastNode.nextNode = p;
+		lastNode = p;
+		p.nextNode = firstNode;
 	}
 }
