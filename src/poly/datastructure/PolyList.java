@@ -52,12 +52,12 @@ public class PolyList {
 		checkPolynomial(polynomial); //The program will continue if no error found, else it will throw error.
 		
 		StringTokenizer st = new StringTokenizer(polynomial, "*");
-				int coeff = Integer.parseInt(st.nextToken());
-		String component = st.nextToken();
+				int coeff = Integer.parseInt(st.nextToken().trim());
+		String component = st.nextToken().trim();
 		int xPower = Integer.parseInt(component.split("\\^")[1]);
-		component = st.nextToken();
+		component = st.nextToken().trim();
 		int yPower = Integer.parseInt(component.split("\\^")[1]);
-		component = st.nextToken();
+		component = st.nextToken().trim();
 		int zPower = Integer.parseInt(component.split("\\^")[1]);
 		
 		PolyNode node = new PolyNode(coeff, xPower, yPower, zPower);
@@ -113,13 +113,13 @@ public class PolyList {
 		if (numberOfComponents == 4) {
 			// Check the coeff
 			try {
-				Integer.parseInt(st.nextToken());
+				Integer.parseInt(st.nextToken().trim());
 			} catch (NumberFormatException e) {
 				throw new IllegalArgumentException("The coeff of the input polynomial is not an integer");
 			}
 			
 			// Check the first component
-			String component = st.nextToken();
+			String component = st.nextToken().trim();
 			if (component.matches(".*\\^{2,}.*")) { // If find more than one "^"
 				throw new IllegalArgumentException(component + " is not in the right format."); 
 			}
@@ -141,7 +141,7 @@ public class PolyList {
 			}
 			
 			// Check the second component
-			component = st.nextToken();
+			component = st.nextToken().trim();
 			if (component.matches(".*\\^{2,}.*")) { // If find more than one "^"
 				throw new IllegalArgumentException(component + " is not in the right format."); 
 			}
@@ -163,7 +163,7 @@ public class PolyList {
 			}
 			
 			// Check the third component
-			component = st.nextToken();
+			component = st.nextToken().trim();
 			if (component.matches(".*\\^{2,}.*")) { // If find more than one "^"
 				throw new IllegalArgumentException(component + " is not in the right format."); 
 			}
