@@ -53,11 +53,35 @@ public class PolyNameNode implements PolyNameNodeInterface {
 	 * Add new node to the list.
 	 */
 	public void addNode(PolyNode p) {
-		if (firstRightNode == null)
+		if (firstRightNode == null) {
 			firstRightNode = p;
-		else
-			lastRightNode.nextNode = p;
-		lastRightNode = p;
-		p.nextNode = firstRightNode;
+			lastRightNode = p;
+			p.nextNode = firstRightNode;
+			System.out.printf("Added first node(%s) into the list%n", p.toString());
+		}
+		else {
+			PolyNode current = firstRightNode;
+			PolyNode previous = lastRightNode;
+			int sumOfCurrent = firstRightNode.getXPower() + firstRightNode.getYPower() + firstRightNode.getZPower();
+			int sumOfInstertingNode = p.getXPower() + p.getYPower() + p.getZPower();
+			
+			// Check with the first node. If lower, insert at first place
+			if (sumOfInstertingNode < sumOfCurrent) {
+				p.nextNode = firstRightNode;
+				lastRightNode.nextNode = p;
+				firstRightNode = p;
+			}
+			else {
+				current = firstRightNode.nextNode;
+				while ((current != firstRightNode) && (sumOfInstertingNode > sumOfCurrent)) {
+					previous = current;
+					current = current.nextNode;
+				}
+				previous.nextNode = p;
+				p.nextNode = current;
+				if (current == firstRightNode) lastRightNode = p;
+			}
+			System.out.printf("Inserted %s between %s and %s%n", p.toString(), previous.toString(), current.toString());
+		}
 	}
 }

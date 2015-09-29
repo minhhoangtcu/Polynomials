@@ -12,7 +12,10 @@ public class PolyNodeTest extends PolyList {
 	public void testAddPoly() {
 		list = new PolyList();
 		list.addNode("a", "6*x^4*y^5*z^3");
-		System.out.println(list.firstNode.firstRightNode.toString());
+		//System.out.println(list.firstNode.firstRightNode.toString());
+		list.addNode("a", "6*x^4*y^5*z^3 + 6*x^4*y^5*z^3");
+		//list.addNode("a", "6*x^4*y^5*z^3");
+		//list.addNode("a", "6*x^4*y^5*z^3");
 	}
 	
 	@Test
