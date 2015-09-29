@@ -8,8 +8,7 @@ import org.junit.internal.Throwables;
 
 public class PolyList {
 	
-	private PolyNameNode firstNode;
-	private PolyNameNode lastNode;
+	private PolyNameNode firstNode, lastNode;
 	
 	public PolyList() {
 		firstNode = null;
@@ -31,19 +30,18 @@ public class PolyList {
 		
 		//Create the first Name Node
 		PolyNameNode nameNode = new PolyNameNode(name, polynomial);
-		if (firstNode == null) {
+		if (firstNode == null)
 			firstNode = nameNode;
-			lastNode = nameNode;
-		}
-		else {
-			nameNode.downNode = firstNode;
+		else
 			lastNode.downNode = nameNode;
-			lastNode = nameNode;
-		}
+		lastNode = nameNode;
+		nameNode.downNode = firstNode;
 		
 		//Create the poly nodes (right nodes) for the Name Node
 		for (int i = 0; i < numberOfPolys; i++) {
-			
+			String eachPoly = st.nextToken();
+			PolyNode rightNode = getPolyNode(eachPoly);
+			nameNode.addNode(rightNode);
 		}
 	}
 	
