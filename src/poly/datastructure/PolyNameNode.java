@@ -62,26 +62,38 @@ public class PolyNameNode implements PolyNameNodeInterface {
 		else {
 			PolyNode current = firstRightNode;
 			PolyNode previous = lastRightNode;
-			int sumOfCurrent = firstRightNode.getXPower() + firstRightNode.getYPower() + firstRightNode.getZPower();
-			int sumOfInstertingNode = p.getXPower() + p.getYPower() + p.getZPower();
+			int sumOfCurrent = sumOfPower(firstRightNode);
+			int sumOfInstertingNode = sumOfPower(p);
 			
 			// Check with the first node. If lower, insert at first place
 			if (sumOfInstertingNode < sumOfCurrent) {
 				p.nextNode = firstRightNode;
 				lastRightNode.nextNode = p;
 				firstRightNode = p;
+				System.out.printf("Inserted %s to the first slot in the list%n", p.toString());
 			}
 			else {
 				current = firstRightNode.nextNode;
+				sumOfCurrent = sumOfPower(current);
 				while ((current != firstRightNode) && (sumOfInstertingNode > sumOfCurrent)) {
 					previous = current;
 					current = current.nextNode;
+					sumOfCurrent = sumOfPower(current);
 				}
 				previous.nextNode = p;
 				p.nextNode = current;
-				if (current == firstRightNode) lastRightNode = p;
+				if (current == firstRightNode){
+					lastRightNode = p;
+					System.out.printf("Inserted %s to the last slot in the list%n", p.toString());
+				}
+				else 
+					System.out.printf("Inserted %s between %s and %s%n", p.toString(), previous.toString(), current.toString());
 			}
-			System.out.printf("Inserted %s between %s and %s%n", p.toString(), previous.toString(), current.toString());
+			
 		}
+	}
+	
+	private int sumOfPower(PolyNode p) {
+		return p.getXPower() + p.getYPower() + p.getZPower();
 	}
 }
