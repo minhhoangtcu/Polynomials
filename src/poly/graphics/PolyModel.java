@@ -3,14 +3,18 @@
  */
 package poly.graphics;
 
+import poly.datastructure.PolyList;
+
 public class PolyModel {
 
 	private Object[][] tableDataColData;
 	MainMenu main;
+	PolyList list;
 	
 	public PolyModel(MainMenu mainMenu) {
 		initiateRandomValues();
 		main = mainMenu;
+		list = new PolyList();
 	}
 	
 	public Object[][] getData() {

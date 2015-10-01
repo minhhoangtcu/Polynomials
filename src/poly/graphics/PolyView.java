@@ -38,6 +38,7 @@ public class PolyView extends JFrame {
 	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb;
 	JPanel panelEvaluate, panelDisplay;
 	JLabel lblDisplay, lblArithFeedback, lblInputFeedback, labelIOFeedback;
+	JTextField textFieldPolyInput;
 
 	/**
 	 * Create the frame.
@@ -77,7 +78,6 @@ public class PolyView extends JFrame {
 		panelInput.add(lblInputInstruction, "cell 0 0 2 1,alignx center,aligny center");
 		lblInputInstruction.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JTextField textFieldPolyInput;
 		textFieldPolyInput = new JTextField();
 		panelInput.add(textFieldPolyInput, "cell 0 1,alignx right,aligny center");
 		textFieldPolyInput.setColumns(80);

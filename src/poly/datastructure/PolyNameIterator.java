@@ -16,6 +16,7 @@ public class PolyNameIterator {
 		System.out.printf("Printing all nodes within %s%n", list.name);
 		do {
 			System.out.println(currentNode.toString());
+			currentNode = currentNode.nextNode;
 		} while(currentNode != firstRightNode);
 	}
 	
