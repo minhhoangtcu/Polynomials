@@ -1,10 +1,6 @@
 package poly.datastructure;
 
 import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.junit.internal.Throwables;
 
 public class PolyList {
 	
@@ -16,13 +12,28 @@ public class PolyList {
 	}
 	
 	/*
+	 * Return the size of list (contains Name Nodes)
+	 */
+	public int size() {
+		int size = 0;
+		PolyNameNode current = firstNode;
+		
+		do {
+			size++;
+			current = current.downNode;
+		} while (current != firstNode);
+		
+		return size;
+	}
+	
+	/*
 	 * Create various PolyNode if needed from the provided String.
 	 * Input: 6*x^4*y^5*z^3 + 3*x^4*y^5*z^3
 	 * After checking for error, we create a NameNode then create various PolyNode
 	 * If this is the first Node in the list, we point the variable firstNode to it.
 	 * If this is not the first Node in the list (!=null), we point the next variable from the firstNode to it.
 	 */
-	protected void addNode(String name, String polynomial) throws IllegalArgumentException {
+	public void addNode(String name, String polynomial) throws IllegalArgumentException {
 		checkAllPolynomials(polynomial); //The program will continue if no error found, else it will throw error.
 		
 		StringTokenizer st = new StringTokenizer(polynomial, "(+|-)");

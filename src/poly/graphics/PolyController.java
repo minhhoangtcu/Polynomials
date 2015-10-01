@@ -18,7 +18,7 @@ public class PolyController {
 		view = main.view;
 		model = main.model;
 		
-		conSave = new ControllerSave(view);
+		conSave = new ControllerSave(view, model);
 		conEvaluate = new ControllerEvaluate(view);
 		conDisplay = new ControllerDisplay(model, view);
 		conLoad = new ControllerLoad(model, view);
