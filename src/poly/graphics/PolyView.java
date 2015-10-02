@@ -32,14 +32,13 @@ public class PolyView extends JFrame {
 	private JTextField textFieldArithmeticResult;
 	private Object[] tableDataColNames;
 	private Object[][] tableDataColData;
-	
-	// A set of components that we want to give access to the controller
-	JTable tableData;
-	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb;
 	private JPanel panelEvaluate, panelDisplay;
 	private JLabel lblDisplay, lblArithFeedback, lblInputFeedback, labelIOFeedback;
 	private JTextField textFieldPolyInput, textFieldNameInput;
-
+	
+	// A set of components that we want to give access to the controller (to add listener to)
+	JTable tableData;
+	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb;
 	
 	/**
 	 * Create the frame.
@@ -79,7 +78,7 @@ public class PolyView extends JFrame {
 		lblInputName.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panelInput.add(lblInputName, "cell 0 0,alignx center");
 		
-		JLabel lblInputInstruction = new JLabel("Please insert the polynomials in the form of: x^2*y^5*z^10");
+		JLabel lblInputInstruction = new JLabel("Please insert the polynomials in the form of: 6*x^2*y^5*z^10");
 		lblInputInstruction.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		panelInput.add(lblInputInstruction, "cell 1 0 2 1,alignx center,aligny center");
 		lblInputInstruction.setHorizontalAlignment(SwingConstants.CENTER);
@@ -116,9 +115,7 @@ public class PolyView extends JFrame {
 		lblDatabase.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		output.add(lblDatabase, BorderLayout.NORTH);
 		
-		tableDataColNames = new Object[2];
-		tableDataColNames[0] = "Name";
-		tableDataColNames[1] = "Polynomials";
+		tableDataColNames = model.getColumnNames();
 		tableDataColData = model.getData();	
 		
 		JPanel panelData = new JPanel();
@@ -126,6 +123,7 @@ public class PolyView extends JFrame {
 		panelData.setLayout(new GridLayout(0, 2, 0, 0));
 		tableData = new JTable(tableDataColData, tableDataColNames);
 		tableData.setFillsViewportHeight(true);
+		tableData.getColumnModel().getColumn(1).setPreferredWidth(500);
 		output.add(tableData, BorderLayout.SOUTH);
 		
 		JScrollPane scrollData = new JScrollPane(tableData);
