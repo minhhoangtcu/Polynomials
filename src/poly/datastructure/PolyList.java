@@ -4,7 +4,7 @@ import java.util.StringTokenizer;
 
 public class PolyList {
 	
-	PolyNameNode firstNode, lastNode;
+	private PolyNameNode firstNode, lastNode;
 	
 	public PolyList() {
 		firstNode = null;
@@ -15,15 +15,22 @@ public class PolyList {
 	 * Return the size of list (contains Name Nodes)
 	 */
 	public int size() {
-		int size = 0;
-		PolyNameNode current = firstNode;
-		
-		do {
-			size++;
-			current = current.downNode;
-		} while (current != firstNode);
-		
-		return size;
+		if (isEmpty()) return 0;
+		else {
+			int size = 0;
+			PolyNameNode current = firstNode;
+			
+			do {
+				size++;
+				current = current.getDownPtr();
+			} while (current != firstNode);
+			
+			return size;
+		}
+	}
+	
+	public boolean isEmpty() {
+		return firstNode == null;
 	}
 	
 	/*
@@ -44,9 +51,9 @@ public class PolyList {
 		if (firstNode == null)
 			firstNode = nameNode;
 		else
-			lastNode.downNode = nameNode;
+			lastNode.setDownPtr(nameNode);
 		lastNode = nameNode;
-		nameNode.downNode = firstNode;
+		nameNode.setDownPtr(firstNode);
 		
 		//Create the poly nodes (right nodes) for the Name Node
 		for (int i = 0; i < numberOfPolys; i++) {
@@ -199,5 +206,13 @@ public class PolyList {
 		}
 		else
 			throw new IllegalArgumentException("Must input all 4 components: the coefficient, x, y, z. Please review the provided format.");
+	}
+
+	public PolyNameNode getFirstNode() {
+		return firstNode;
+	}
+	
+	public PolyNameNode getLastNode() {
+		return lastNode;
 	}
 }

@@ -3,12 +3,9 @@ package poly.datastructure;
 public class PolyListIterator {
 	
 	private PolyList list;
-	private PolyNameNode firstNode, lastNode;
 	
 	public PolyListIterator(PolyList list) {
 		this.list = list;
-		firstNode = list.firstNode;
-		lastNode = list.lastNode;
 	}
 	
 	public String getPoly(int i) throws IndexOutOfBoundsException {
@@ -26,7 +23,7 @@ public class PolyListIterator {
 	public PolyNameNode getNameNode(int i)  throws IndexOutOfBoundsException{
 		if (i >= list.size()) throw new IndexOutOfBoundsException();
 		else {
-			PolyNameNode current = firstNode;
+			PolyNameNode current = list.getFirstNode();
 			for (int j = 0; j < i; j++)
 				current = current.getDownPtr();
 			return current;

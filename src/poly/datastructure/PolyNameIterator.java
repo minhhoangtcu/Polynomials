@@ -7,13 +7,13 @@ public class PolyNameIterator {
 	
 	public PolyNameIterator(PolyNameNode list) {
 		this.list = list;
-		firstRightNode = list.firstRightNode;
-		lastRightNode = list.lastRightNode;
+		firstRightNode = list.getRightPtr();
+		lastRightNode = list.getLastRightPtr();
 	}
 	
 	public void printNodes() {
 		PolyNode currentNode = firstRightNode;
-		System.out.printf("Printing all nodes within %s%n", list.name);
+		System.out.printf("Printing all nodes within %s%n", list.getPolyName());
 		do {
 			System.out.println(currentNode.toString());
 			currentNode = currentNode.nextNode;

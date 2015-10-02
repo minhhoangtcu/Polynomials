@@ -10,11 +10,13 @@ import poly.datastructure.PolyNameNode;
 public class PolyModel {
 
 	private Object[][] tableDataColData;
+	private String[] tableDataColNames;
 	MainMenu main;
 	PolyList list;
 	int numberOfNode;
 	
 	public PolyModel(MainMenu mainMenu) {
+		initNames();
 		initiateRandomValues();
 		main = mainMenu;
 		list = new PolyList();
@@ -30,15 +32,26 @@ public class PolyModel {
 	}
 	
 	public Object[][] getData() {
+		
 		return tableDataColData;
+	}
+	
+	public String[] getColumnNames() {
+		return tableDataColNames;
 	}
 	
 	public String getPoly(int id) {
 		return (String) tableDataColData[id][1];
 	}
 	
+	private void initNames() {
+		tableDataColNames = new String[2];
+		tableDataColNames[0] = "Name";
+		tableDataColNames[1] = "Polynomials";
+	}
+	
 	private void initiateRandomValues() {
-		tableDataColData = new Object[2][2];
+		tableDataColData = new Object[100][2];
 		tableDataColData[0][0] = "1";
 		tableDataColData[1][0] = "2";
 		tableDataColData[0][1] = "test test test";
