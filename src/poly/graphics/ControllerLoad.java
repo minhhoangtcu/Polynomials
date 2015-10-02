@@ -23,12 +23,12 @@ public class ControllerLoad implements MouseListener {
 		int returnVal = fc.showOpenDialog(view);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 		    File selectedFile = fc.getSelectedFile();
-		    view.labelIOFeedback.setText("Selected file: " + selectedFile.getAbsolutePath());
-		    view.labelIOFeedback.setVisible(true);
+		    view.setIODisplay("Selected file: " + selectedFile.getAbsolutePath());
+		    view.setVisibleIO(true);
 		}
 		else {
-			view.labelIOFeedback.setText("Selected another file");
-			view.labelIOFeedback.setVisible(true);
+			view.setIODisplay("Selected another file");
+			view.setVisibleIO(true);
 		}
 	}
 
