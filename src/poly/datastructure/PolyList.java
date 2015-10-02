@@ -33,7 +33,7 @@ public class PolyList {
 	 * If this is the first Node in the list, we point the variable firstNode to it.
 	 * If this is not the first Node in the list (!=null), we point the next variable from the firstNode to it.
 	 */
-	public void addNode(String name, String polynomial) throws IllegalArgumentException {
+	public PolyNameNode addNode(String name, String polynomial) throws IllegalArgumentException {
 		checkAllPolynomials(polynomial); //The program will continue if no error found, else it will throw error.
 		
 		StringTokenizer st = new StringTokenizer(polynomial, "(+|-)");
@@ -54,6 +54,8 @@ public class PolyList {
 			PolyNode rightNode = getPolyNode(eachPoly);
 			nameNode.addNode(rightNode);
 		}
+		
+		return nameNode;
 	}
 	
 	/* 

@@ -4,17 +4,29 @@
 package poly.graphics;
 
 import poly.datastructure.PolyList;
+import poly.datastructure.PolyNameIterator;
+import poly.datastructure.PolyNameNode;
 
 public class PolyModel {
 
 	private Object[][] tableDataColData;
 	MainMenu main;
 	PolyList list;
+	int numberOfNode;
 	
 	public PolyModel(MainMenu mainMenu) {
 		initiateRandomValues();
 		main = mainMenu;
 		list = new PolyList();
+		numberOfNode = 0;
+	}
+	
+	public void add(String name, String polynomial) throws IllegalArgumentException{
+		PolyNameNode addingNode = list.addNode(name, polynomial);
+		PolyNameIterator iterator = new PolyNameIterator(addingNode);
+		tableDataColData[numberOfNode][0] = name;
+		tableDataColData[numberOfNode][1] = iterator.getPolynomial();
+		numberOfNode++;
 	}
 	
 	public Object[][] getData() {

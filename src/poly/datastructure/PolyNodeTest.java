@@ -20,7 +20,7 @@ public class PolyNodeTest extends PolyList {
 		System.out.println(iter.getPolynomial());
 	}
 	
-	@Test
+	//@Test
 	public void testGetPolyNode() {
 		assertTrue("6*x^4*y^5*z^3".equals(getPolyNode("6*x^4*y^5*z^3").toString()));
 		assertTrue("9*x^3*y^8*z^1".equals(getPolyNode("9*x^3*y^8*z^1").toString()));
@@ -29,7 +29,7 @@ public class PolyNodeTest extends PolyList {
 		assertTrue("0*x^0*y^0*z^0".equals(getPolyNode("0*x^0*y^0*z^0").toString()));
 	}
 	
-	@Test
+	//@Test
 	public void testValidity() {
 		assertTrue(isValid("6*x^4*y^5*z^3"));
 		assertTrue(isValid("6*x^4*y^5*z^3 + 6*x^4*y^5*z^3"));
