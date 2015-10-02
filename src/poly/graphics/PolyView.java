@@ -38,7 +38,7 @@ public class PolyView extends JFrame {
 	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb;
 	JPanel panelEvaluate, panelDisplay;
 	JLabel lblDisplay, lblArithFeedback, lblInputFeedback, labelIOFeedback;
-	JTextField textFieldPolyInput;
+	JTextField textFieldPolyInput, textFieldNameInput;
 
 	/**
 	 * Create the frame.
@@ -71,24 +71,33 @@ public class PolyView extends JFrame {
 		
 		JPanel panelInput = new JPanel();
 		input.add(panelInput, BorderLayout.CENTER);
-		panelInput.setLayout(new MigLayout("", "[684.00px][100.00px]", "[20px][23px][21.00]"));
+		panelInput.setLayout(new MigLayout("", "[15.00%,grow][75%][10%]", "[20px][23px][21.00]"));
+		
+		JLabel lblInputName = new JLabel("Enter Name");
+		lblInputName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInputName.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panelInput.add(lblInputName, "cell 0 0,alignx center");
 		
 		JLabel lblInputInstruction = new JLabel("Please insert the polynomials in the form of: x^2*y^5*z^10");
 		lblInputInstruction.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panelInput.add(lblInputInstruction, "cell 0 0 2 1,alignx center,aligny center");
+		panelInput.add(lblInputInstruction, "cell 1 0 2 1,alignx center,aligny center");
 		lblInputInstruction.setHorizontalAlignment(SwingConstants.CENTER);
 		
+		textFieldNameInput = new JTextField();
+		panelInput.add(textFieldNameInput, "cell 0 1,growx");
+		textFieldNameInput.setColumns(10);
+		
 		textFieldPolyInput = new JTextField();
-		panelInput.add(textFieldPolyInput, "cell 0 1,alignx right,aligny center");
+		panelInput.add(textFieldPolyInput, "cell 1 1,alignx right,aligny center");
 		textFieldPolyInput.setColumns(80);
 		
 		btnSave = new JButton("Save");
-		panelInput.add(btnSave, "cell 1 1,alignx left,aligny top");
+		panelInput.add(btnSave, "cell 2 1,alignx left,aligny top");
 		
 		lblInputFeedback = new JLabel("Feedback");
 		lblInputFeedback.setVisible(false);
 		lblInputFeedback.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		panelInput.add(lblInputFeedback, "cell 0 2 2 1,alignx center");
+		panelInput.add(lblInputFeedback, "cell 0 2 3 1,alignx center");
 		lblInputFeedback.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JPanel output = new JPanel();
