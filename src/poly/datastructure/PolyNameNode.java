@@ -6,10 +6,10 @@ package poly.datastructure;
  */
 public class PolyNameNode implements PolyNameNodeInterface {
 
-	String name;
-	String polynomial;
-	PolyNameNode downNode;
-	PolyNode firstRightNode;
+	private String name;
+	private String polynomial;
+	private PolyNameNode downNode;
+	private PolyNode firstRightNode;
 	PolyNode lastRightNode;
 	
 	public PolyNameNode(String name, String polynomial) {
@@ -47,6 +47,14 @@ public class PolyNameNode implements PolyNameNodeInterface {
 	@Override
 	public void setRightPtr(PolyNode p) {
 		firstRightNode = p;
+	}
+	
+	public PolyNode getLastRightPtr() {
+		return lastRightNode;
+	}
+	
+	public void setLastRightPtr(PolyNode p) {
+		lastRightNode = p;
 	}
 	
 	/*
