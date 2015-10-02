@@ -36,10 +36,11 @@ public class PolyView extends JFrame {
 	// A set of components that we want to give access to the controller
 	JTable tableData;
 	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb;
-	JPanel panelEvaluate, panelDisplay;
-	JLabel lblDisplay, lblArithFeedback, lblInputFeedback, labelIOFeedback;
-	JTextField textFieldPolyInput, textFieldNameInput;
+	private JPanel panelEvaluate, panelDisplay;
+	private JLabel lblDisplay, lblArithFeedback, lblInputFeedback, labelIOFeedback;
+	private JTextField textFieldPolyInput, textFieldNameInput;
 
+	
 	/**
 	 * Create the frame.
 	 */
@@ -245,5 +246,45 @@ public class PolyView extends JFrame {
 		lblArithFeedback.setVisible(false);
 		lblArithFeedback.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		arithmetic.add(lblArithFeedback, "cell 0 3,alignx center,aligny center");
+	}
+
+	public String getPolynomialInput() {
+		return textFieldPolyInput.getText();
+	}
+	
+	public String getNameInput() {
+		return textFieldNameInput.getText();
+	}
+	
+	public void setPolynomialInput(String t) {
+		textFieldPolyInput.setText(t);
+	}
+	
+	public void setNameInput(String t) {
+		textFieldNameInput.setText(t);
+	}
+	
+	public void setDbDisplay(String t) {
+		lblDisplay.setText(t);
+	}
+	
+	public void setArithDisplay(String t) {
+		lblArithFeedback.setText(t);
+	}
+	
+	public void setInputDisplay(String t) {
+		lblInputFeedback.setText(t);
+	}
+	
+	public void setIODisplay(String t) {
+		labelIOFeedback.setText(t);
+	}
+	
+	public void setVisibleEvaluation(boolean b) {
+		panelEvaluate.setVisible(b);
+	}
+	
+	public void setVisibleDisplay(boolean b) {
+		panelDisplay.setVisible(b);
 	}
 }
