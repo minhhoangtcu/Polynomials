@@ -15,19 +15,20 @@ public class ControllerSave implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		String polynomial = getPoly();
-		model.list.addNode(name, polynomial);
-		
-		
-	}
-	
-	private String getPoly() {
-		return view.textFieldPolyInput.getText();
+		String polynomial = view.getPolynomialInput();
+		String name = view.getNameInput();
+		try {
+			model.list.addNode(name, polynomial);
+			view.updateTable();
+			setNotice(String.format("Named polymial: %s named %s into the list", polynomial, name));
+		} catch (IllegalArgumentException e) {
+			setNotice(e.toString());
+		}
 	}
 	
 	private void setNotice(String text) {
-		view.lblInputFeedback.setVisible(true);
-		view.lblInputFeedback.setText(text);
+		view.setVisibleInput(true);
+		view.setInputDisplay(text);
 	}
 
 	@Override

@@ -117,7 +117,7 @@ public class PolyView extends JFrame {
 		output.add(lblDatabase, BorderLayout.NORTH);
 		
 		tableDataColNames = new Object[2];
-		tableDataColNames[0] = "ID";
+		tableDataColNames[0] = "Name";
 		tableDataColNames[1] = "Polynomials";
 		tableDataColData = model.getData();	
 		
@@ -288,11 +288,19 @@ public class PolyView extends JFrame {
 		panelDisplay.setVisible(b);
 	}
 	
+	public void setVisibleInput(boolean b) {
+		lblInputFeedback.setVisible(b);
+	}
+	
 	public boolean isEvaluateVisible() {
 		return panelEvaluate.isVisible();
 	}
 	
 	public void setVisibleIO(boolean b) {
 		labelIOFeedback.setVisible(b);
+	}
+	
+	public void updateTable() {
+		tableData.repaint();
 	}
 }
