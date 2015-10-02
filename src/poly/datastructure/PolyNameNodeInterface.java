@@ -34,4 +34,6 @@ public interface PolyNameNodeInterface {
 	public void setDownPtr(PolyNameNode p);
 	public PolyNode getRightPtr();
 	public void setRightPtr(PolyNode p);
+	public PolyNode getLastRightPtr();
+	public void setLastRightPtr(PolyNode p);
 }
