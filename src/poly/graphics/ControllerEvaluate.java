@@ -12,9 +12,8 @@ public class ControllerEvaluate implements MouseListener{
 	}
 	
 	public void turnEvaluationPanel() {
-		boolean isVisible = view.panelEvaluate.isVisible();
-		if (isVisible) view.panelEvaluate.setVisible(false);
-		else view.panelEvaluate.setVisible(true);
+		boolean isVisible = view.isEvaluateVisible();
+		view.setVisibleEvaluation(!isVisible);
 	}
 	
 	@Override

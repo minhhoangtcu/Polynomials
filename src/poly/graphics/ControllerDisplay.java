@@ -17,17 +17,17 @@ public class ControllerDisplay implements MouseListener{
 	 * Turn on the display polynomial label in database section.
 	 */
 	public void turnDbDisplayLabel() {
-		view.panelDisplay.setVisible(true);
+		view.setVisibleDisplay(true);
 	}
 	
 	public void setDbDisplayPoly() {
 		int id = view.tableData.getSelectedRow();
 		String poly = model.getPoly(id);
-		view.lblDisplay.setText("Displaying: " + poly);
+		view.setDbDisplay("Displaying: " + poly);
 	}
 	
 	public void setDbDisplayError() {
-		view.lblDisplay.setText("Please select a polynomial from the left.");
+		view.setDbDisplay("Please select a polynomial from the left.");
 	}
 	
 	/*

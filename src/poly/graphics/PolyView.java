@@ -287,4 +287,12 @@ public class PolyView extends JFrame {
 	public void setVisibleDisplay(boolean b) {
 		panelDisplay.setVisible(b);
 	}
+	
+	public boolean isEvaluateVisible() {
+		return panelEvaluate.isVisible();
+	}
+	
+	public void setVisibleIO(boolean b) {
+		labelIOFeedback.setVisible(b);
+	}
 }
