@@ -125,7 +125,8 @@ public class PolyView extends JFrame {
 		tableData.getColumnModel().getColumn(1).setPreferredWidth(500);
 		output.add(tableData, BorderLayout.SOUTH);
 		
-		JScrollPane scrollData = new JScrollPane(tableData);
+		JScrollPane scrollData = new JScrollPane(tableData, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		panelData.add(scrollData);
 		
 		
