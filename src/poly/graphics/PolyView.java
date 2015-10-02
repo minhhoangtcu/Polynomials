@@ -115,13 +115,12 @@ public class PolyView extends JFrame {
 		lblDatabase.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		output.add(lblDatabase, BorderLayout.NORTH);
 		
-		tableDataColNames = model.getColumnNames();
-		tableDataColData = model.getData();	
+		PolyTableModel tableModel = new PolyTableModel(model);
 		
 		JPanel panelData = new JPanel();
 		output.add(panelData, BorderLayout.CENTER);
 		panelData.setLayout(new GridLayout(0, 2, 0, 0));
-		tableData = new JTable(tableDataColData, tableDataColNames);
+		tableData = new JTable(tableModel);
 		tableData.setFillsViewportHeight(true);
 		tableData.getColumnModel().getColumn(1).setPreferredWidth(500);
 		output.add(tableData, BorderLayout.SOUTH);
