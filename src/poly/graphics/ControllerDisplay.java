@@ -21,7 +21,7 @@ public class ControllerDisplay implements MouseListener{
 	}
 	
 	public void setDbDisplayPoly() {
-		int id = view.tableData.getSelectedRow();
+		int id = view.getSelectedPoly();
 		String poly = model.getPoly(id);
 		view.setDbDisplay("Displaying: " + poly);
 	}
@@ -35,7 +35,7 @@ public class ControllerDisplay implements MouseListener{
 	 */
 	private void display() {
 		turnDbDisplayLabel();
-		boolean isSelected = view.tableData.getSelectedRow() != -1; 
+		boolean isSelected = view.getSelectedPoly() != -1; 
 		if (isSelected)
 			setDbDisplayPoly();
 		else

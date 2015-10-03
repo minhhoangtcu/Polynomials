@@ -14,6 +14,7 @@ public class PolyNodeTest extends PolyList {
 		program.model.add("b", "6*x^4*y^5*z^3 + 6*x^2*y^5*z^3");
 		program.model.add("c", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0");
 		program.model.add("d", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0 + 6*x^5*y^5*z^5 + 6*x^4*y^4*z^4 + 6*x^3*y^3*z^3");
+		program.model.
 		//program.view.updateTable();
 		try {
 			Thread.sleep(10000);

@@ -37,7 +37,7 @@ public class PolyView extends JFrame {
 	private JTextField textFieldPolyInput, textFieldNameInput;
 	
 	// A set of components that we want to give access to the controller (to add listener to)
-	JTable tableData;
+	private JTable tableData;
 	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb;
 	
 	/**
@@ -122,7 +122,7 @@ public class PolyView extends JFrame {
 		panelData.setLayout(new GridLayout(0, 2, 0, 0));
 		tableData = new JTable(tableModel);
 		tableData.setFillsViewportHeight(true);
-		tableData.getColumnModel().getColumn(1).setPreferredWidth(500);
+		tableData.getColumnModel().getColumn(1).setPreferredWidth(300);
 		output.add(tableData, BorderLayout.SOUTH);
 		
 		JScrollPane scrollData = new JScrollPane(tableData, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -300,5 +300,9 @@ public class PolyView extends JFrame {
 	
 	public void updateTable() {
 		tableData.repaint();
+	}
+
+	public int getSelectedPoly() {
+		return tableData.getSelectedRow();
 	}
 }
