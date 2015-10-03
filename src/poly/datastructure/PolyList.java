@@ -11,6 +11,28 @@ public class PolyList {
 		lastNode = null;
 	}
 	
+	public void remove(int i) {
+		if ((i >= size()) | (i < 0)) throw new IndexOutOfBoundsException();
+		else if (isEmpty()){
+			
+		}
+		PolyNameNode previous = getNameNode(i-1);
+		PolyNameNode removing = previous.getDownPtr();
+		PolyNameNode next = removing.getDownPtr();
+		
+		previous.setDownPtr(next);
+	}
+	
+	public PolyNameNode getNameNode(int i)  throws IndexOutOfBoundsException{
+		if ((i >= size()) | (i < 0)) throw new IndexOutOfBoundsException();
+		else {
+			PolyNameNode current = getFirstNode();
+			for (int j = 0; j < i; j++)
+				current = current.getDownPtr();
+			return current;
+		}
+	}
+	
 	/*
 	 * Return the size of list (contains Name Nodes)
 	 */
@@ -214,5 +236,13 @@ public class PolyList {
 	
 	public PolyNameNode getLastNode() {
 		return lastNode;
+	}
+	
+	public String getPoly(int i) throws IndexOutOfBoundsException {
+		return new PolyNameIterator(getNameNode(i)).getPolynomial();
+	}
+	
+	public String getName(int i) throws IndexOutOfBoundsException {
+		return getNameNode(i).getPolyName();
 	}
 }
