@@ -23,7 +23,7 @@ public class PolyController {
 		conEvaluate = new ControllerEvaluate(view);
 		conDisplay = new ControllerDisplay(model, view);
 		conLoad = new ControllerLoad(model, view);
-		conDelete = new ControllerDelete(model);
+		conDelete = new ControllerDelete(model, view);
 		
 		view.btnSave.addMouseListener(conSave);
 		view.btnEvaluate.addMouseListener(conEvaluate);	

@@ -14,9 +14,10 @@ public class PolyNodeTest extends PolyList {
 		program.model.add("b", "6*x^4*y^5*z^3 + 6*x^2*y^5*z^3");
 		program.model.add("c", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0");
 		program.model.add("d", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0 + 6*x^5*y^5*z^5 + 6*x^4*y^4*z^4 + 6*x^3*y^3*z^3");
+		//program.model.remove(0);
 		//program.view.updateTable();
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(600000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -37,11 +38,11 @@ public class PolyNodeTest extends PolyList {
 	
 	//@Test
 	public void testGetPolyNode() {
-		assertTrue("6*x^4*y^5*z^3".equals(getPolyNode("6*x^4*y^5*z^3").toString()));
-		assertTrue("9*x^3*y^8*z^1".equals(getPolyNode("9*x^3*y^8*z^1").toString()));
-		assertTrue("10*x^2*y^126*z^1234123".equals(getPolyNode("10*x^2*y^126*z^1234123").toString()));
-		assertTrue("12341*x^4*y^1235*z^1234".equals(getPolyNode("12341*x^4*y^1235*z^1234").toString()));
-		assertTrue("0*x^0*y^0*z^0".equals(getPolyNode("0*x^0*y^0*z^0").toString()));
+		assertTrue("6*x^4*y^5*z^3".equals(createPolyNode("6*x^4*y^5*z^3").toString()));
+		assertTrue("9*x^3*y^8*z^1".equals(createPolyNode("9*x^3*y^8*z^1").toString()));
+		assertTrue("10*x^2*y^126*z^1234123".equals(createPolyNode("10*x^2*y^126*z^1234123").toString()));
+		assertTrue("12341*x^4*y^1235*z^1234".equals(createPolyNode("12341*x^4*y^1235*z^1234").toString()));
+		assertTrue("0*x^0*y^0*z^0".equals(createPolyNode("0*x^0*y^0*z^0").toString()));
 	}
 	
 	//@Test

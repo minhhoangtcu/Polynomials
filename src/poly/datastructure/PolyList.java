@@ -1,5 +1,6 @@
 package poly.datastructure;
 
+import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
 public class PolyList {
@@ -11,20 +12,51 @@ public class PolyList {
 		lastNode = null;
 	}
 	
-	public void remove(int i) {
-		if ((i >= size()) | (i < 0)) throw new IndexOutOfBoundsException();
-		else if (isEmpty()){
-			
+	/*
+	 * Remove the NameNode with index i in the list
+	 * If there is only 1 node within the list, set both first and last node to null.
+	 * If the NameNode is the first node. We will remove the first node.
+	 * If the NameNode is somewhere in between, we will find the previous node of the node we want to remove. Then we remove that node:
+	 * 	The for loop will run to index i (the position of the node we want to remove)
+	 * 	We then check if it is the last node or not. If yes, set the previous of the removing node to last node.
+	 * 	Else, we remove like usual.
+	 */
+	public void remove(int i) throws NoSuchElementException, IndexOutOfBoundsException{
+		int size = getSize();
+		if (isEmpty())
+			throw new NoSuchElementException("The list is empty");
+		else if ((i >= size) | (i < 0)) throw new IndexOutOfBoundsException();
+		else {
+			if (size == 1) {
+				firstNode = null;
+				lastNode = null;
+			}
+			else if (i == 0) {
+				firstNode = firstNode.getDownPtr();
+				lastNode.setDownPtr(firstNode);
+			}
+			else {
+				PolyNameNode previous = null;
+				PolyNameNode current = getFirstNode();
+				for (int j = 0; j < i; j++) {
+					previous = current;
+					current = current.getDownPtr();
+				}
+				
+				if (current == lastNode) {
+					lastNode = previous;
+				}
+				PolyNameNode next = current.getDownPtr();
+				previous.setDownPtr(next);
+			}
 		}
-		PolyNameNode previous = getNameNode(i-1);
-		PolyNameNode removing = previous.getDownPtr();
-		PolyNameNode next = removing.getDownPtr();
-		
-		previous.setDownPtr(next);
 	}
 	
+	/*
+	 * Return the NameNode with index i in the list
+	 */
 	public PolyNameNode getNameNode(int i)  throws IndexOutOfBoundsException{
-		if ((i >= size()) | (i < 0)) throw new IndexOutOfBoundsException();
+		if ((i >= getSize()) | (i < 0)) throw new IndexOutOfBoundsException();
 		else {
 			PolyNameNode current = getFirstNode();
 			for (int j = 0; j < i; j++)
@@ -36,7 +68,7 @@ public class PolyList {
 	/*
 	 * Return the size of list (contains Name Nodes)
 	 */
-	public int size() {
+	public int getSize() {
 		if (isEmpty()) return 0;
 		else {
 			int size = 0;
@@ -80,7 +112,7 @@ public class PolyList {
 		//Create the poly nodes (right nodes) for the Name Node
 		for (int i = 0; i < numberOfPolys; i++) {
 			String eachPoly = st.nextToken();
-			PolyNode rightNode = getPolyNode(eachPoly);
+			PolyNode rightNode = createPolyNode(eachPoly);
 			nameNode.addNode(rightNode);
 		}
 		
@@ -90,7 +122,7 @@ public class PolyList {
 	/* 
 	 * Create a PolyNode from the provided String
 	 */
-	protected PolyNode getPolyNode(String polynomial) throws IllegalArgumentException {
+	protected PolyNode createPolyNode(String polynomial) throws IllegalArgumentException {
 		checkPolynomial(polynomial); //The program will continue if no error found, else it will throw error.
 		
 		StringTokenizer st = new StringTokenizer(polynomial, "*");
@@ -239,7 +271,7 @@ public class PolyList {
 	}
 	
 	public String getPoly(int i) throws IndexOutOfBoundsException {
-		return new PolyNameIterator(getNameNode(i)).getPolynomial();
+		return getNameNode(i).getPolynomial();
 	}
 	
 	public String getName(int i) throws IndexOutOfBoundsException {
