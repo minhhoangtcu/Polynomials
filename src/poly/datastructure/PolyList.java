@@ -13,6 +13,20 @@ public class PolyList {
 	}
 	
 	/*
+	 * Search through the list linearly from the first node to find node with similar name
+	 * 	If the poly is empty, then there is no such node with the same name
+	 */
+	public boolean hasName(String name) {
+		if (firstNode == null) return false;
+		PolyNameNode current = firstNode;
+		do {
+			if (current.getPolyName().equals(name)) return true;
+			current = current.getDownPtr();
+		} while (current != firstNode);
+		return false;
+	}
+	
+	/*
 	 * Remove the NameNode with index i in the list
 	 * If there is only 1 node within the list, set both first and last node to null.
 	 * If the NameNode is the first node. We will remove the first node.
