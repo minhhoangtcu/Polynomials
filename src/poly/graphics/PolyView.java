@@ -30,8 +30,6 @@ public class PolyView extends JFrame {
 	private JTextField textFieldY;
 	private JTextField textFieldZ;
 	private JTextField textFieldArithmeticResult;
-	private Object[] tableDataColNames;
-	private Object[][] tableDataColData;
 	private JPanel panelEvaluate, panelDisplay;
 	private JLabel lblDisplay, lblArithFeedback, lblInputFeedback, labelIOFeedback;
 	private JTextField textFieldPolyInput, textFieldNameInput;

@@ -16,14 +16,23 @@ public class ControllerDelete implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		int index = view.getSelectedPoly();
-		try {
-			model.remove(index);
-			view.updateTable();
-			System.out.println("Removed " + index);
-		} catch (Exception error) {
-			view.setDbDisplay(error.getMessage());
+		if (model.getSize() == 0) {
+			view.setDbDisplay("Please save a polynomial to database with the input tab above");
+			view.setVisibleDisplay(true);
 		}
-		
+		if (index < 0) {
+			view.setDbDisplay("Please choose a polynomial from the left.");
+			view.setVisibleDisplay(true);
+		}
+		else {
+			try {
+				model.remove(index);
+				view.updateTable();
+				System.out.println("Removed " + index);
+			} catch (Exception error) {
+				view.setDbDisplay(error.getMessage());
+			}
+		}
 	}
 
 	@Override
