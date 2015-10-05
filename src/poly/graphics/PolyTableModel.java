@@ -22,7 +22,7 @@ public class PolyTableModel extends AbstractTableModel {
 	}
 
     public int getRowCount() {
-        return list.size();
+        return list.getSize();
     }
 
     public String getColumnName(int col) {
