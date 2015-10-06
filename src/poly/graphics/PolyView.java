@@ -17,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import net.miginfocom.swing.MigLayout;
+import poly.graphics.models.PolyTableModel;
+
 import java.awt.Color;
 
 @SuppressWarnings("serial")
@@ -33,6 +35,7 @@ public class PolyView extends JFrame {
 	private JPanel panelEvaluate, panelDisplay;
 	private JLabel lblDisplay, lblArithFeedback, lblInputFeedback, labelIOFeedback;
 	private JTextField textFieldPolyInput, textFieldNameInput;
+	private JComboBox<String> comboBoxFirst, comboBoxSecond;
 	
 	// A set of components that we want to give access to the controller (to add listener to)
 	private JTable tableData;
@@ -216,13 +219,13 @@ public class PolyView extends JFrame {
 		JLabel lblChooseFirstPolynomial = new JLabel("Choose first polynomial");
 		panelArithmeticDecision.add(lblChooseFirstPolynomial);
 		
-		JComboBox<String> comboBoxFirst = new JComboBox<String>();
+		comboBoxFirst = new JComboBox<String>();
 		panelArithmeticDecision.add(comboBoxFirst);
 		
 		JLabel lblChooseSecondPolynomial = new JLabel("Choose second polynomial");
 		panelArithmeticDecision.add(lblChooseSecondPolynomial);
 		
-		JComboBox<String> comboBoxSecond = new JComboBox<String>();
+		comboBoxSecond = new JComboBox<String>();
 		panelArithmeticDecision.add(comboBoxSecond);
 		
 		JButton btnAdd = new JButton("Add");
@@ -303,4 +306,8 @@ public class PolyView extends JFrame {
 	public int getSelectedPoly() {
 		return tableData.getSelectedRow();
 	}
+	
+	public void addSelectionToFirstComboBox() {
+	}
+	
 }

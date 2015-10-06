@@ -1,6 +1,8 @@
-package poly.graphics;
+package poly.graphics.models;
 
 import javax.swing.table.AbstractTableModel;
+
+import poly.graphics.PolyModel;
 
 @SuppressWarnings("serial")
 public class PolyTableModel extends AbstractTableModel {

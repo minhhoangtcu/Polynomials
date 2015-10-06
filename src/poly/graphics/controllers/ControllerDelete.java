@@ -1,7 +1,10 @@
-package poly.graphics;
+package poly.graphics.controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import poly.graphics.PolyModel;
+import poly.graphics.PolyView;
 
 public class ControllerDelete implements MouseListener {
 

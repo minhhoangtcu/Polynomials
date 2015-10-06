@@ -1,7 +1,9 @@
-package poly.graphics;
+package poly.graphics.controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import poly.graphics.PolyView;
 
 public class ControllerEvaluate implements MouseListener{
 
