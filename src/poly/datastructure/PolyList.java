@@ -102,34 +102,43 @@ public class PolyList {
 	}
 	
 	/*
+	 * Add a node with the provided to the list
+	 */
+	public PolyNameNode addNode(String name, String polynomial) throws IllegalArgumentException {
+		PolyNameNode adding = createNameNode(name, polynomial);
+		addNodeToList(adding);
+		return adding;
+	}
+	
+	/*
+	 * Add the provided node to the list
+	 */
+	public void addNodeToList(PolyNameNode adding) throws IllegalArgumentException {
+		if (firstNode == null)
+			firstNode = adding;
+		else // Add the node to the last place
+			lastNode.setDownPtr(adding);
+		lastNode = adding;
+		adding.setDownPtr(firstNode);
+	}
+	
+	/*
 	 * Create various PolyNode if needed from the provided String.
 	 * Input: 6*x^4*y^5*z^3 + 3*x^4*y^5*z^3
 	 * After checking for error, we create a NameNode then create various PolyNode
 	 * If this is the first Node in the list, we point the variable firstNode to it.
 	 * If this is not the first Node in the list (!=null), we point the next variable from the firstNode to it.
 	 */
-	public PolyNameNode addNode(String name, String polynomial) throws IllegalArgumentException {
+	public PolyNameNode createNameNode(String name, String polynomial) throws IllegalArgumentException {
 		checkAllPolynomials(polynomial); //The program will continue if no error found, else it will throw error.
-		
+		PolyNameNode nameNode = new PolyNameNode(name, polynomial);
 		StringTokenizer st = new StringTokenizer(polynomial, "(+|-)");
 		int numberOfPolys = st.countTokens();
-		
-		//Create the first Name Node
-		PolyNameNode nameNode = new PolyNameNode(name, polynomial);
-		if (firstNode == null)
-			firstNode = nameNode;
-		else
-			lastNode.setDownPtr(nameNode);
-		lastNode = nameNode;
-		nameNode.setDownPtr(firstNode);
-		
-		//Create the poly nodes (right nodes) for the Name Node
 		for (int i = 0; i < numberOfPolys; i++) {
 			String eachPoly = st.nextToken();
 			PolyNode rightNode = createPolyNode(eachPoly);
 			nameNode.addNode(rightNode);
 		}
-		
 		return nameNode;
 	}
 	
