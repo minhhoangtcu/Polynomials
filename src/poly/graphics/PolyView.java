@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import net.miginfocom.swing.MigLayout;
+import poly.graphics.models.PolyComboBoxModel;
 import poly.graphics.models.PolyTableModel;
 
 import java.awt.Color;
@@ -219,7 +220,7 @@ public class PolyView extends JFrame {
 		JLabel lblChooseFirstPolynomial = new JLabel("Choose first polynomial");
 		panelArithmeticDecision.add(lblChooseFirstPolynomial);
 		
-		comboBoxFirst = new JComboBox<String>();
+		comboBoxFirst = new JComboBox<String>(new PolyComboBoxModel(model));
 		panelArithmeticDecision.add(comboBoxFirst);
 		
 		JLabel lblChooseSecondPolynomial = new JLabel("Choose second polynomial");
