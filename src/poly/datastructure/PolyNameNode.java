@@ -19,6 +19,20 @@ public class PolyNameNode implements PolyNameNodeInterface {
 		firstRightNode = null;
 	}
 	
+	public boolean isEmpty() {
+		return size() == 0;
+	}
+	
+	public int size() {
+		PolyNode currentNode = firstRightNode;
+		int size = 0;
+		do {
+			currentNode = currentNode.nextNode;
+			size++;
+		} while(currentNode != firstRightNode);
+		return size;
+	}
+	
 	/*
 	 * Add new node to the list.
 	 */
@@ -32,8 +46,8 @@ public class PolyNameNode implements PolyNameNodeInterface {
 		else {
 			PolyNode current = firstRightNode;
 			PolyNode previous = lastRightNode;
-			int sumOfCurrent = sumOfPower(firstRightNode);
-			int sumOfInstertingNode = sumOfPower(p);
+			int sumOfCurrent = firstRightNode.sumOfPower();
+			int sumOfInstertingNode = p.sumOfPower();
 			
 			// Check with the first node. If lower, insert at first place
 			if (sumOfInstertingNode < sumOfCurrent) {
@@ -44,11 +58,11 @@ public class PolyNameNode implements PolyNameNodeInterface {
 			}
 			else {
 				current = firstRightNode.nextNode;
-				sumOfCurrent = sumOfPower(current);
+				sumOfCurrent = current.sumOfPower();
 				while ((current != firstRightNode) && (sumOfInstertingNode > sumOfCurrent)) {
 					previous = current;
 					current = current.nextNode;
-					sumOfCurrent = sumOfPower(current);
+					sumOfCurrent = current.sumOfPower();
 				}
 				previous.nextNode = p;
 				p.nextNode = current;
@@ -97,10 +111,6 @@ public class PolyNameNode implements PolyNameNodeInterface {
 			currentNode = currentNode.nextNode;
 		} while(currentNode != firstRightNode);
 		return output;
-	}
-	
-	private int sumOfPower(PolyNode p) {
-		return p.getXPower() + p.getYPower() + p.getZPower();
 	}
 	
 	@Override
