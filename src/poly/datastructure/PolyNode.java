@@ -84,4 +84,8 @@ public class PolyNode implements PolyNodeInterface {
 			return true;
 		else return false;
 	}
+	
+	public int sumOfPower() {
+		return xPower + yPower + zPower;
+	}
 }
