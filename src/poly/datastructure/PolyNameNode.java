@@ -49,23 +49,44 @@ public class PolyNameNode implements PolyNameNodeInterface {
 			int sumOfCurrent = firstRightNode.sumOfPower();
 			int sumOfInstertingNode = p.sumOfPower();
 			
+			// CASE1: First Node
 			// Check with the first node. If lower, insert at first place
-			if (sumOfInstertingNode < sumOfCurrent) {
+			if (current.isSamePowers(p)) { // CHECK IF EQUAL POWERS
+				current.setCoeff(p.getCoeff() + current.getCoeff());
+				System.out.println("Found similar polynomials, adding the coeff");
+				return;
+			}
+			if (sumOfInstertingNode < sumOfCurrent) { // CHECK IF POWERS LOWER
 				p.nextNode = firstRightNode;
 				lastRightNode.nextNode = p;
 				firstRightNode = p;
 				System.out.printf("Inserted %s to the first slot in the list%n", p.toString());
 			}
+			
+			// CASE2: The rests
 			else {
 				current = firstRightNode.nextNode;
 				sumOfCurrent = current.sumOfPower();
-				while ((current != firstRightNode) && (sumOfInstertingNode > sumOfCurrent)) {
-					previous = current;
-					current = current.nextNode;
-					sumOfCurrent = current.sumOfPower();
+				/*
+				 *  Loop through the list of the nodes. If we come to a node where sumOfInsert is larger than sumOfCurrent, we stop
+				 *  Add the inserting node to that position. (making the list ascending)
+				 *  If we came across the node that has a similar powers, we then just add to that node and finish the method.
+				 */
+				while ((current != firstRightNode) && (sumOfInstertingNode >= sumOfCurrent)) {
+					if (current.isSamePowers(p)) {
+						current.setCoeff(p.getCoeff() + current.getCoeff());
+						System.out.println("Found similar polynomials, adding the coeff");
+						return;
+					}
+					else {
+						previous = current;
+						current = current.nextNode;
+						sumOfCurrent = current.sumOfPower();
+					}
 				}
 				previous.nextNode = p;
 				p.nextNode = current;
+				//CASE3: The last node
 				if (current == firstRightNode){
 					lastRightNode = p;
 					System.out.printf("Inserted %s to the last slot in the list%n", p.toString());

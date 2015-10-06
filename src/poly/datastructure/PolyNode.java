@@ -79,10 +79,23 @@ public class PolyNode implements PolyNodeInterface {
 		return String.format("%d*x^%d*y^%d*z^%d", coeff, xPower, yPower, zPower);
 	}
 	
+	/*
+	 * Check the equality of two polys. Should have equal coeff, xPower, yPower, and zPower.
+	 */
 	public boolean isEquals(PolyNode p) {
 		if (coeff == p.coeff && xPower == p.xPower && yPower == p.yPower && zPower == p.zPower)
 			return true;
 		else return false;
+	}
+	
+	/*
+	 * Check the powers of two node. Return if all powers are equal. 
+	 */
+	public boolean isSamePowers(PolyNode p) {
+		boolean isSameX = xPower == p.xPower;
+		boolean isSameY = yPower == p.xPower;
+		boolean isSameZ = zPower == p.zPower;
+		return (isSameX && isSameY && isSameZ);
 	}
 	
 	public int sumOfPower() {
