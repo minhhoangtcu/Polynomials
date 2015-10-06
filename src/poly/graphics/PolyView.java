@@ -56,7 +56,7 @@ public class PolyView extends JFrame {
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[774px]", "[130.00px][285.00px][172.00px]"));
+		contentPane.setLayout(new MigLayout("", "[100%]", "[20%][50%][30%]"));
 		
 		
 		
@@ -136,7 +136,7 @@ public class PolyView extends JFrame {
 		// DATABASE> RIGHT SIDE
 		JPanel panelDatabaseCommands = new JPanel();
 		panelData.add(panelDatabaseCommands);
-		panelDatabaseCommands.setLayout(new MigLayout("", "[89.00px][73.00px][133.00px][92.00px]", "[34px][23px][33px][34.00px][][20.00]"));
+		panelDatabaseCommands.setLayout(new MigLayout("", "[20%][30%][30%][20%]", "[15%][10%][15%][35%][10%][15%]"));
 		
 		JLabel lblDataCommandsInstruction = new JLabel("<html><center>Please choose a polynomial from the list on the left and<br> choose the following command</center></html>");
 		lblDataCommandsInstruction.setFont(new Font("Tahoma", Font.PLAIN, 14));
