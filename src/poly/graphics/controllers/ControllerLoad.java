@@ -1,10 +1,13 @@
-package poly.graphics;
+package poly.graphics.controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 
 import javax.swing.JFileChooser;
+
+import poly.graphics.PolyModel;
+import poly.graphics.PolyView;
 
 public class ControllerLoad implements MouseListener {
 	

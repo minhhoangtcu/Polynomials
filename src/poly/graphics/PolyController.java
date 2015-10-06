@@ -3,6 +3,12 @@
  */
 package poly.graphics;
 
+import poly.graphics.controllers.ControllerDelete;
+import poly.graphics.controllers.ControllerDisplay;
+import poly.graphics.controllers.ControllerEvaluate;
+import poly.graphics.controllers.ControllerLoad;
+import poly.graphics.controllers.ControllerSave;
+
 public class PolyController {
 	
 	private MainMenu main;
