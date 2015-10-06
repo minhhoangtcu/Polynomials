@@ -21,6 +21,7 @@ import poly.graphics.models.PolyComboBoxModel;
 import poly.graphics.models.PolyTableModel;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class PolyView extends JFrame {
@@ -205,7 +206,7 @@ public class PolyView extends JFrame {
 		// ARITHMETIC SECTION
 		JPanel arithmetic = new JPanel();
 		contentPane.add(arithmetic, "cell 0 2,grow");
-		arithmetic.setLayout(new MigLayout("", "[760px]", "[][][71.00px][]"));
+		arithmetic.setLayout(new MigLayout("", "[100%]", "[25%][30%][30%][15%]"));
 		
 		JLabel lblArithmetic = new JLabel("Arithmetic");
 		lblArithmetic.setBackground(Color.LIGHT_GRAY);
@@ -221,12 +222,16 @@ public class PolyView extends JFrame {
 		panelArithmeticDecision.add(lblChooseFirstPolynomial);
 		
 		comboBoxFirst = new JComboBox<String>(new PolyComboBoxModel(model));
+		comboBoxFirst.setPreferredSize(new Dimension(50, 20));
+		comboBoxFirst.setEditable(true);
 		panelArithmeticDecision.add(comboBoxFirst);
 		
 		JLabel lblChooseSecondPolynomial = new JLabel("Choose second polynomial");
 		panelArithmeticDecision.add(lblChooseSecondPolynomial);
 		
-		comboBoxSecond = new JComboBox<String>();
+		comboBoxSecond = new JComboBox<String>(new PolyComboBoxModel(model));
+		comboBoxSecond.setPreferredSize(new Dimension(50, 20));
+		comboBoxSecond.setEditable(true);
 		panelArithmeticDecision.add(comboBoxSecond);
 		
 		JButton btnAdd = new JButton("Add");
