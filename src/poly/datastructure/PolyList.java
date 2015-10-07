@@ -3,6 +3,8 @@ package poly.datastructure;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
+import org.junit.internal.Throwables;
+
 public class PolyList {
 	
 	private PolyNameNode firstNode, lastNode;
@@ -97,6 +99,15 @@ public class PolyList {
 				current = current.getDownPtr();
 			return current;
 		}
+	}
+	
+	public PolyNameNode getNameNode(String name) throws IllegalArgumentException{
+		PolyNameNode current = firstNode;
+		do {
+			if (current.getPolyName().equals(name)) return current;
+			current = current.getDownPtr();
+		} while (current != firstNode);
+		throw new IllegalArgumentException("No polynomial has such name");
 	}
 	
 	/*
@@ -317,6 +328,10 @@ public class PolyList {
 	
 	public String getPoly(int i) throws IndexOutOfBoundsException {
 		return getNameNode(i).getPolynomial();
+	}
+	
+	public PolyNameNode getPoly(String name) throws IllegalArgumentException {
+		return getNameNode(name);
 	}
 	
 	public String getName(int i) throws IndexOutOfBoundsException {

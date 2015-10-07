@@ -171,4 +171,8 @@ public class PolyNameNode implements PolyNameNodeInterface {
 	public void setLastRightPtr(PolyNode p) {
 		lastRightNode = p;
 	}
+
+	public String getRawPolynomial() {
+		return polynomial;
+	}
 }
