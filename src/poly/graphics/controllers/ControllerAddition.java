@@ -1,37 +1,33 @@
 package poly.graphics.controllers;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import poly.arithmatic.PolyMath;
+import poly.datastructure.PolyNameNode;
 import poly.graphics.PolyModel;
 import poly.graphics.PolyView;
 
-public class ControllerSolve implements MouseListener{
-	
+public class ControllerAddition implements MouseListener  {
+
 	private PolyView view;
 	private PolyModel model;
 	
-	public ControllerSolve(PolyView view, PolyModel model) {
+	public ControllerAddition(PolyView view, PolyModel model) {
 		this.view = view;
 		this.model = model;
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		try {
-			int x = Integer.parseInt(view.getTextX());
-			int y = Integer.parseInt(view.getTextY());
-			int z = Integer.parseInt(view.getTextZ());
-			
-			int index = view.getSelectedPoly();
-			if (index < 0) {
-				view.setResultSolve("Please select a polynomial you want to solve.");
-				view.setVisibleResultSolve(true);
-			}			
-			else {
-				view.setResultSolve("Solved the polynomial, yieding: "+model.solve(index, x, y, z));
-			}
-		} catch (NumberFormatException e) {
-			view.setResultSolve(e.getMessage());
-		}
+	public void mouseClicked(MouseEvent e) {
+		String name1 = view.getArithInput1Text();
+		String name2 = view.getArithInput2Text();
+		PolyNameNode node1 = model.getPolyNameNode(name1);
+		PolyNameNode node2 = model.getPolyNameNode(name2);
+		PolyNameNode added = PolyMath.add(node1, node2);
+		view.setArithResult(added.getPolynomial());
+		view.setArithInput1Text("");
+		view.setArithInput2Text("");
 	}
 
 	@Override

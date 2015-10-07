@@ -23,7 +23,7 @@ public class Addition {
 	 * Merge two PolyName nodes together without considering anything
 	 */
 	private static PolyNameNode mergePoly(PolyNameNode p1, PolyNameNode p2) {
-		String newPoly = p1.getPolynomial() + " + " + p2.getPolynomial();
+		String newPoly = p1.getRawPolynomial() + " + " + p2.getRawPolynomial();
 		String newName = p1.getPolyName() + "+" + p2.getPolyName();
 		PolyList list = new PolyList(); // For the sake of using a method within the poly list
 		PolyNameNode newNameNode = list.createNameNode(newName, newPoly);

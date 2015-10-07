@@ -64,6 +64,10 @@ public class PolyModel {
 		return tableDataColNames;
 	}
 	
+	public PolyNameNode getPolyNameNode(String name) {
+		return list.getPoly(name);
+	}
+	
 	public String getPoly(int i) {
 		return list.getPoly(i);
 	}

@@ -34,11 +34,12 @@ public class PolyView extends JFrame {
 	private JPanel panelEvaluate, panelDisplay;
 	private JLabel lblDisplay, lblArithFeedback, lblInputFeedback, lblIOFeedback, lblResult;
 	private JTextField textFieldPolyInput, textFieldNameInput;
-	private JComboBox<String> comboBoxFirst, comboBoxSecond;
 	
 	// A set of components that we want to give access to the controller (to add listener to)
 	private JTable tableData;
-	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb, btnSolve;
+	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb, btnSolve, btnAdd, btnSubtract, btnMultiply;
+	private JTextField arithInput1;
+	private JTextField arithInput2;
 	
 	/**
 	 * Create the frame.
@@ -218,26 +219,24 @@ public class PolyView extends JFrame {
 		JLabel lblChooseFirstPolynomial = new JLabel("Choose first polynomial");
 		panelArithmeticDecision.add(lblChooseFirstPolynomial);
 		
-		comboBoxFirst = new JComboBox<String>(new PolyComboBoxModel(model));
-		comboBoxFirst.setPreferredSize(new Dimension(50, 20));
-		comboBoxFirst.setEditable(false);
-		panelArithmeticDecision.add(comboBoxFirst);
+		arithInput1 = new JTextField();
+		panelArithmeticDecision.add(arithInput1);
+		arithInput1.setColumns(10);
 		
 		JLabel lblChooseSecondPolynomial = new JLabel("Choose second polynomial");
 		panelArithmeticDecision.add(lblChooseSecondPolynomial);
 		
-		comboBoxSecond = new JComboBox<String>(new PolyComboBoxModel(model));
-		comboBoxSecond.setPreferredSize(new Dimension(50, 20));
-		comboBoxSecond.setEditable(false);
-		panelArithmeticDecision.add(comboBoxSecond);
+		arithInput2 = new JTextField();
+		panelArithmeticDecision.add(arithInput2);
+		arithInput2.setColumns(10);
 		
-		JButton btnAdd = new JButton("Add");
+		btnAdd = new JButton("Add");
 		panelArithmeticDecision.add(btnAdd);
 		
-		JButton btnSubstract = new JButton("Substract");
-		panelArithmeticDecision.add(btnSubstract);
+		btnSubtract = new JButton("Substract");
+		panelArithmeticDecision.add(btnSubtract);
 		
-		JButton btnMultiply = new JButton("Multiply");
+		btnMultiply = new JButton("Multiply");
 		panelArithmeticDecision.add(btnMultiply);
 		
 		textFieldArithmeticResult = new JTextField();
@@ -310,10 +309,6 @@ public class PolyView extends JFrame {
 		return tableData.getSelectedRow();
 	}
 
-	public String getSelectionComboOne() {
-		return (String) comboBoxFirst.getSelectedItem();
-	}
-	
 	public String getTextX() {
 		return textFieldX.getText();
 	}
@@ -344,8 +339,16 @@ public class PolyView extends JFrame {
 		lblResult.setVisible(state);
 	}
 	
-	public void updateComboBoxes() {
-		comboBoxFirst.repaint();
-		comboBoxSecond.repaint();
+	public String getArithInput2Text() {
+		return arithInput2.getText();
+	}
+	public void setArithInput2Text(String text_1) {
+		arithInput2.setText(text_1);
+	}
+	public String getArithInput1Text() {
+		return arithInput1.getText();
+	}
+	public void setArithInput1Text(String text_2) {
+		arithInput1.setText(text_2);
 	}
 }
