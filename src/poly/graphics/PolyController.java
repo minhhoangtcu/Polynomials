@@ -10,6 +10,7 @@ import poly.graphics.controllers.ControllerEvaluate;
 import poly.graphics.controllers.ControllerLoad;
 import poly.graphics.controllers.ControllerSave;
 import poly.graphics.controllers.ControllerSolve;
+import poly.graphics.controllers.ControllerSubtraction;
 
 public class PolyController {
 	
@@ -23,6 +24,7 @@ public class PolyController {
 	private ControllerDelete conDelete;
 	private ControllerSolve conSolve;
 	private ControllerAddition conAdd;
+	private ControllerSubtraction conSub;
 	
 	public PolyController(MainMenu mainMenu) {
 		main = mainMenu; 
@@ -36,6 +38,7 @@ public class PolyController {
 		conDelete = new ControllerDelete(model, view);
 		conSolve = new ControllerSolve(view, model);
 		conAdd = new ControllerAddition(view, model);
+		conSub = new ControllerSubtraction(view, model);
 		
 		view.btnSolve.addMouseListener(conSolve);
 		view.btnSave.addMouseListener(conSave);
@@ -44,5 +47,6 @@ public class PolyController {
 		view.btnLoadDb.addMouseListener(conLoad);
 		view.btnDelete.addMouseListener(conDelete);
 		view.btnAdd.addMouseListener(conAdd);
+		view.btnSubtract.addMouseListener(conSub);
 	}
 }
