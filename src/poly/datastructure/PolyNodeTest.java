@@ -7,15 +7,23 @@ public class PolyNodeTest extends PolyList {
 
 	PolyList list;
 	
+	
 	@Test
-	public void testTable() {
+	public void testSolving() {
 		MainMenu program = new MainMenu();
 		program.model.add("a", "6*x^4*y^5*z^3");
-		program.model.add("b", "6*x^4*y^5*z^3 + 6*x^2*y^5*z^3");
-		program.model.add("c", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0");
-		program.model.add("d", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0 + 6*x^5*y^5*z^5 + 6*x^4*y^4*z^4 + 6*x^3*y^3*z^3");
-		//program.model.remove(0);
-		//program.view.updateTable();
+		assertEquals(6, program.model.solve(0, 1, 1, 1));
+		assertEquals(21233664, program.model.solve(0, 2, 4, 6));
+		
+		program.model.add("b", "6*x^4*y^5*z^3 + 10*x^0*y^1*z^3");
+		assertEquals(16, program.model.solve(1, 1, 1, 1));
+		assertEquals(24736, program.model.solve(1, 2, 2, 2));
+		
+		program.model.remove(0);
+		program.model.add("a", "6*x^4*y^5*z^3 + 6*x^4*y^5*z^3");
+		assertEquals(12, program.model.solve(1, 1, 1, 1));
+		
+		program.view.updateTable();
 		try {
 			Thread.sleep(600000);
 		} catch (InterruptedException e) {
@@ -24,19 +32,33 @@ public class PolyNodeTest extends PolyList {
 		}
 	}
 	
-	@Test
+	public void testTable() {
+		MainMenu program = new MainMenu();
+		program.model.add("a", "6*x^4*y^5*z^3");
+		program.model.add("b", "6*x^4*y^5*z^3 + 6*x^2*y^5*z^3");
+		program.model.add("c", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0");
+		program.model.add("d", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0 + 6*x^5*y^5*z^5 + 6*x^4*y^4*z^4 + 6*x^3*y^3*z^3");
+		program.model.remove(0);
+		program.view.updateTable();
+		try {
+			Thread.sleep(600000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public void testAddPoly() {
 		list = new PolyList();
 		list.addNode("a", "6*x^4*y^5*z^3");
-		list.addNode("a", "6*x^4*y^5*z^3 + 6*x^2*y^5*z^3");
-		list.addNode("a", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0");
-		list.addNode("a", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0 + 6*x^5*y^5*z^5 + 6*x^4*y^4*z^4 + 6*x^3*y^3*z^3");
+		list.addNode("b", "6*x^4*y^5*z^3 + 6*x^2*y^5*z^3");
+		list.addNode("c", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0");
+		list.addNode("d", "6*x^1*y^1*z^1 - 6*x^2*y^2*z^2 + 6*x^0*y^0*z^0 + 6*x^5*y^5*z^5 + 6*x^4*y^4*z^4 + 6*x^3*y^3*z^3");
 		PolyNameNode firstNode = list.getFirstNode();
 		firstNode.printNodes();
 		System.out.println(firstNode.getPolynomial());
 	}
 	
-	@Test
 	public void testGetPolyNode() {
 		assertTrue("6*x^4*y^5*z^3".equals(createPolyNode("6*x^4*y^5*z^3").toString()));
 		assertTrue("9*x^3*y^8*z^1".equals(createPolyNode("9*x^3*y^8*z^1").toString()));
@@ -45,7 +67,6 @@ public class PolyNodeTest extends PolyList {
 		assertTrue("0*x^0*y^0*z^0".equals(createPolyNode("0*x^0*y^0*z^0").toString()));
 	}
 	
-	@Test
 	public void testValidity() {
 		assertTrue(isValid("6*x^4*y^5*z^3"));
 		assertTrue(isValid("6*x^4*y^5*z^3 + 6*x^4*y^5*z^3"));

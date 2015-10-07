@@ -4,6 +4,9 @@
 package poly.graphics;
 
 import poly.datastructure.PolyList;
+import poly.datastructure.PolyNameIterator;
+import poly.datastructure.PolyNameNode;
+import poly.datastructure.PolyNode;
 
 public class PolyModel {
 
@@ -32,6 +35,27 @@ public class PolyModel {
 	public void remove(int i) {
 		// TODO: write a remove method with provided name (easier to implement and cheaper to perform)
 		list.remove(i);
+	}
+	
+	/*
+	 * Solve a polynomial with the given index of the poly within the list and the value of x, y, and z
+	 */
+	public int solve(int index, int x, int y, int z) {
+		PolyNameNode poly = list.getNameNode(index);
+		PolyNameIterator iter = new PolyNameIterator(poly);
+		int output = 0;
+		
+		PolyNode current = poly.getRightPtr();
+		do {
+			int coeff = current.getCoeff();
+			int xP = current.getXPower();
+			int yP = current.getYPower();
+			int zP = current.getZPower();
+			output += coeff*Math.pow(x, xP)*Math.pow(y, yP)*Math.pow(z, zP);
+			current = current.next();
+		} while (!iter.isFirst(current));
+		System.out.println(output);
+		return output;
 	}
 	
 	public String[] getColumnNames() {
