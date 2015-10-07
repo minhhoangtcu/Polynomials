@@ -302,8 +302,8 @@ public class PolyView extends JFrame {
 		lblIOFeedback.setVisible(b);
 	}
 	
-	public void updateTable() {
-		tableData.repaint();
+	public void repaintEverything() {
+		repaint();
 	}
 
 	public int getSelectedPoly() {
