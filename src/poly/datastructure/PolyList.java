@@ -93,7 +93,7 @@ public class PolyList {
 		else if ((i >= size) | (i < 0)) throw new IndexOutOfBoundsException();
 		else {
 			PolyNameNode current = firstNode;
-			for (int j = 1; j < i; j++)
+			for (int j = 0; j < i; j++)
 				current = current.getDownPtr();
 			return current;
 		}
