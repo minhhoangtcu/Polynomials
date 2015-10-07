@@ -12,6 +12,23 @@ public class PolyList {
 		lastNode = null;
 	}
 	
+	public void printList() {
+		PolyNameNode current = firstNode;
+		int i = 0;
+		System.out.println("**************************************************");
+		System.out.println("Printing data");
+		do {
+			System.out.println(i + "\t name: " + current.getPolyName() + "\t poly: " + current.getPolynomial());
+			i++;
+			current = current.getDownPtr();
+		} while (current != firstNode);
+		System.out.println("**************************************************");
+		
+		for (int j = 0; j < getSize(); j++) {
+			System.out.println(j + "\t name: " + getName(j) + "\t poly: " + getPoly(j));
+		}
+	}
+	
 	/*
 	 * Search through the list linearly from the first node to find node with similar name
 	 * 	If the poly is empty, then there is no such node with the same name
@@ -105,9 +122,11 @@ public class PolyList {
 	}
 	
 	/*
-	 * Add a node with the provided to the list
+	 * Add a node with the provided name and polynomial to the list
 	 */
 	public PolyNameNode addNode(String name, String polynomial) throws IllegalArgumentException {
+		System.out.println("*************************************************");
+		System.out.println("Adding " + polynomial + " to the list of NameNode");
 		PolyNameNode adding = createNameNode(name, polynomial);
 		addNodeToList(adding);
 		return adding;
@@ -122,7 +141,7 @@ public class PolyList {
 		else // Add the node to the last place
 			lastNode.setDownPtr(adding);
 		lastNode = adding;
-		adding.setDownPtr(firstNode);
+		lastNode.setDownPtr(firstNode);
 	}
 	
 	/*

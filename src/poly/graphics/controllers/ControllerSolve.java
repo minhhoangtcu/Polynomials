@@ -29,6 +29,7 @@ public class ControllerSolve implements MouseListener{
 			else {
 				view.setResultSolve("Solved the polynomial, yieding: "+model.solve(index, x, y, z));
 			}
+			view.updateComboBoxes();
 		} catch (NumberFormatException e) {
 			view.setResultSolve(e.getMessage());
 		}

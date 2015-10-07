@@ -220,7 +220,7 @@ public class PolyView extends JFrame {
 		
 		comboBoxFirst = new JComboBox<String>(new PolyComboBoxModel(model));
 		comboBoxFirst.setPreferredSize(new Dimension(50, 20));
-		comboBoxFirst.setEditable(true);
+		comboBoxFirst.setEditable(false);
 		panelArithmeticDecision.add(comboBoxFirst);
 		
 		JLabel lblChooseSecondPolynomial = new JLabel("Choose second polynomial");
@@ -228,7 +228,7 @@ public class PolyView extends JFrame {
 		
 		comboBoxSecond = new JComboBox<String>(new PolyComboBoxModel(model));
 		comboBoxSecond.setPreferredSize(new Dimension(50, 20));
-		comboBoxSecond.setEditable(true);
+		comboBoxSecond.setEditable(false);
 		panelArithmeticDecision.add(comboBoxSecond);
 		
 		JButton btnAdd = new JButton("Add");
@@ -344,4 +344,8 @@ public class PolyView extends JFrame {
 		lblResult.setVisible(state);
 	}
 	
+	public void updateComboBoxes() {
+		comboBoxFirst.repaint();
+		comboBoxSecond.repaint();
+	}
 }
