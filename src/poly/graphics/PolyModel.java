@@ -82,6 +82,10 @@ public class PolyModel {
 		tableDataColNames[1] = "Polynomials";
 	}
 	
+	public boolean hasName(String name) {
+		return list.hasName(name);
+	}
+	
 	public int getSize() {
 		return list.getSize();
 	}

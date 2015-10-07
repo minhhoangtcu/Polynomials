@@ -252,103 +252,84 @@ public class PolyView extends JFrame {
 	public String getPolynomialInput() {
 		return textFieldPolyInput.getText();
 	}
-	
 	public String getNameInput() {
 		return textFieldNameInput.getText();
 	}
-	
 	public void setPolynomialInput(String t) {
 		textFieldPolyInput.setText(t);
 	}
-	
 	public void setNameInput(String t) {
 		textFieldNameInput.setText(t);
 	}
-	
 	public void setDbDisplay(String t) {
 		lblDisplay.setText(t);
 	}
-	
 	public void setArithDisplay(String t) {
 		lblArithFeedback.setText(t);
 	}
-	
+	public void setVisibleArithDisplay(boolean b) {
+		lblArithFeedback.setVisible(b);
+	}
 	public void setInputDisplay(String t) {
 		lblInputFeedback.setText(t);
 	}
-	
 	public void setIODisplay(String t) {
 		lblIOFeedback.setText(t);
 	}
-	
 	public void setVisibleEvaluation(boolean b) {
 		panelEvaluate.setVisible(b);
 	}
-	
 	public void setVisibleDisplay(boolean b) {
 		panelDisplay.setVisible(b);
 	}
-	
 	public void setVisibleInput(boolean b) {
 		lblInputFeedback.setVisible(b);
 	}
-	
 	public boolean isEvaluateVisible() {
 		return panelEvaluate.isVisible();
 	}
-	
 	public void setVisibleIO(boolean b) {
 		lblIOFeedback.setVisible(b);
 	}
-	
 	public void repaintEverything() {
 		repaint();
 	}
-
 	public int getSelectedPoly() {
 		return tableData.getSelectedRow();
 	}
-
 	public String getTextX() {
 		return textFieldX.getText();
 	}
-	
 	public String getTextY() {
 		return textFieldY.getText();
 	}
-	
 	public String getTextZ() {
 		return textFieldZ.getText();
 	}
-
 	public void clearTextXYZ() {
 		textFieldX.setText("");
 		textFieldY.setText("");
 		textFieldZ.setText("");
 	}
-
 	public void setArithResult(String text) {
 		textFieldArithmeticResult.setText(text);
 	}
-
 	public void setResultSolve(String text) {
 		lblResult.setText(text);
 	}
-	
 	public void setVisibleResultSolve(boolean state) {
 		lblResult.setVisible(state);
 	}
-	
 	public String getArithInput2Text() {
 		return arithInput2.getText();
 	}
-	public void setArithInput2Text(String text_1) {
-		arithInput2.setText(text_1);
+	public void clearArithInput2Text() {
+		arithInput2.setText("");
 	}
 	public String getArithInput1Text() {
 		return arithInput1.getText();
 	}
-	public void setArithInput1Text(String text_2) {
-		arithInput1.setText(text_2);
+	public void clearArithInput1Text() {
+		arithInput1.setText("");
 	}
 }
