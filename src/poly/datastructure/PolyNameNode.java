@@ -175,4 +175,18 @@ public class PolyNameNode implements PolyNameNodeInterface {
 	public String getRawPolynomial() {
 		return polynomial;
 	}
+
+	public void refreshRawForm() {
+		PolyNameIterator iter = new PolyNameIterator(this);
+		PolyNode current = iter.next();
+		String newRaw = "";
+		do {
+			newRaw += current.getCoeff();
+			newRaw += "*x^" + current.getXPower();
+			newRaw += "*y^" + current.getYPower();
+			newRaw += "*z^" + current.getZPower();
+			current = iter.next();
+		} while (iter.isFirst(current));
+		polynomial = newRaw;
+	}
 }
