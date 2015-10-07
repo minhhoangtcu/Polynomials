@@ -22,7 +22,7 @@ public class ControllerSave implements MouseListener {
 		String name = view.getNameInput();
 		try {
 			model.add(name, polynomial);
-			view.updateTable();
+			view.repaint();
 			setNotice(String.format("Named polymial: %s named %s into the list", polynomial, name));
 		} catch (IllegalArgumentException e) {
 			setNotice(e.getMessage());

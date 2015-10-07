@@ -30,7 +30,7 @@ public class ControllerDelete implements MouseListener {
 		else {
 			try {
 				model.remove(index);
-				view.updateTable();
+				view.repaint();
 				System.out.println("Removed " + index);
 			} catch (Exception error) {
 				view.setDbDisplay(error.getMessage());
