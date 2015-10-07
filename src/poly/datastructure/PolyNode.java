@@ -93,7 +93,7 @@ public class PolyNode implements PolyNodeInterface {
 	 */
 	public boolean isSamePowers(PolyNode p) {
 		boolean isSameX = xPower == p.xPower;
-		boolean isSameY = yPower == p.xPower;
+		boolean isSameY = yPower == p.yPower;
 		boolean isSameZ = zPower == p.zPower;
 		return (isSameX && isSameY && isSameZ);
 	}
