@@ -8,6 +8,7 @@ import poly.graphics.controllers.ControllerDisplay;
 import poly.graphics.controllers.ControllerEvaluate;
 import poly.graphics.controllers.ControllerLoad;
 import poly.graphics.controllers.ControllerSave;
+import poly.graphics.controllers.ControllerSolve;
 
 public class PolyController {
 	
@@ -19,6 +20,7 @@ public class PolyController {
 	private ControllerDisplay conDisplay;
 	private ControllerLoad conLoad;
 	private ControllerDelete conDelete;
+	private ControllerSolve conSolve;
 	
 	public PolyController(MainMenu mainMenu) {
 		main = mainMenu; 
@@ -30,7 +32,9 @@ public class PolyController {
 		conDisplay = new ControllerDisplay(model, view);
 		conLoad = new ControllerLoad(model, view);
 		conDelete = new ControllerDelete(model, view);
+		conSolve = new ControllerSolve(view, model);
 		
+		view.btnSolve.addMouseListener(conSolve);
 		view.btnSave.addMouseListener(conSave);
 		view.btnEvaluate.addMouseListener(conEvaluate);	
 		view.btnDisplay.addMouseListener(conDisplay);

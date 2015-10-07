@@ -70,10 +70,13 @@ public class PolyList {
 	 * Return the NameNode with index i in the list
 	 */
 	public PolyNameNode getNameNode(int i)  throws IndexOutOfBoundsException{
-		if ((i >= getSize()) | (i < 0)) throw new IndexOutOfBoundsException();
+		int size = getSize();
+		if (i == 0) return firstNode;
+		else if (i == size-1) return lastNode;
+		else if ((i >= size) | (i < 0)) throw new IndexOutOfBoundsException();
 		else {
-			PolyNameNode current = getFirstNode();
-			for (int j = 0; j < i; j++)
+			PolyNameNode current = firstNode;
+			for (int j = 1; j < i; j++)
 				current = current.getDownPtr();
 			return current;
 		}

@@ -30,18 +30,15 @@ public class PolyView extends JFrame {
 	private MainMenu main;
 	private PolyModel model;
 	
-	private JTextField textFieldX;
-	private JTextField textFieldY;
-	private JTextField textFieldZ;
-	private JTextField textFieldArithmeticResult;
+	private JTextField textFieldX, textFieldY, textFieldZ, textFieldArithmeticResult;
 	private JPanel panelEvaluate, panelDisplay;
-	private JLabel lblDisplay, lblArithFeedback, lblInputFeedback, labelIOFeedback;
+	private JLabel lblDisplay, lblArithFeedback, lblInputFeedback, lblIOFeedback, lblResult;
 	private JTextField textFieldPolyInput, textFieldNameInput;
 	private JComboBox<String> comboBoxFirst, comboBoxSecond;
 	
 	// A set of components that we want to give access to the controller (to add listener to)
 	private JTable tableData;
-	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb;
+	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb, btnSolve;
 	
 	/**
 	 * Create the frame.
@@ -52,7 +49,7 @@ public class PolyView extends JFrame {
 		
 		// Set up the main menu
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
+		setBounds(100, 100, 900, 600);
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -125,7 +122,7 @@ public class PolyView extends JFrame {
 		panelData.setLayout(new GridLayout(0, 2, 0, 0));
 		tableData = new JTable(tableModel);
 		tableData.setFillsViewportHeight(true);
-		tableData.getColumnModel().getColumn(1).setPreferredWidth(300);
+		tableData.getColumnModel().getColumn(1).setPreferredWidth(400);
 		output.add(tableData, BorderLayout.SOUTH);
 		
 		JScrollPane scrollData = new JScrollPane(tableData, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -186,10 +183,10 @@ public class PolyView extends JFrame {
 		panelInputXYZ.add(textFieldZ);
 		textFieldZ.setColumns(2);
 		
-		JButton btnSolve = new JButton("Solve");
+		btnSolve = new JButton("Solve");
 		panelInputXYZ.add(btnSolve);
 		
-		JLabel lblResult = new JLabel("Result: ");
+		lblResult = new JLabel("Result: ");
 		panelEvaluate.add(lblResult);
 		
 		btnLoadDb = new JButton("Load Database");
@@ -198,9 +195,9 @@ public class PolyView extends JFrame {
 		btnSaveDb = new JButton("Save Database");
 		panelDatabaseCommands.add(btnSaveDb, "cell 2 4 1 1,alignx center,aligny top");
 		
-		labelIOFeedback = new JLabel("Feedback");
-		panelDatabaseCommands.add(labelIOFeedback, "cell 0 5 4 1,alignx center,aligny center");
-		labelIOFeedback.setVisible(false);
+		lblIOFeedback = new JLabel("Feedback");
+		panelDatabaseCommands.add(lblIOFeedback, "cell 0 5 4 1,alignx center,aligny center");
+		lblIOFeedback.setVisible(false);
 		
 		
 		// ARITHMETIC SECTION
@@ -282,7 +279,7 @@ public class PolyView extends JFrame {
 	}
 	
 	public void setIODisplay(String t) {
-		labelIOFeedback.setText(t);
+		lblIOFeedback.setText(t);
 	}
 	
 	public void setVisibleEvaluation(boolean b) {
@@ -302,7 +299,7 @@ public class PolyView extends JFrame {
 	}
 	
 	public void setVisibleIO(boolean b) {
-		labelIOFeedback.setVisible(b);
+		lblIOFeedback.setVisible(b);
 	}
 	
 	public void updateTable() {
@@ -312,8 +309,39 @@ public class PolyView extends JFrame {
 	public int getSelectedPoly() {
 		return tableData.getSelectedRow();
 	}
+
+	public String getSelectionComboOne() {
+		return (String) comboBoxFirst.getSelectedItem();
+	}
 	
-	public void addSelectionToFirstComboBox() {
+	public String getTextX() {
+		return textFieldX.getText();
+	}
+	
+	public String getTextY() {
+		return textFieldY.getText();
+	}
+	
+	public String getTextZ() {
+		return textFieldZ.getText();
+	}
+
+	public void clearTextXYZ() {
+		textFieldX.setText("");
+		textFieldY.setText("");
+		textFieldZ.setText("");
+	}
+
+	public void setArithResult(String text) {
+		textFieldArithmeticResult.setText(text);
+	}
+
+	public void setResultSolve(String text) {
+		lblResult.setText(text);
+	}
+	
+	public void setVisibleResultSolve(boolean state) {
+		lblResult.setVisible(state);
 	}
 	
 }
