@@ -26,7 +26,9 @@ public class PolyModel {
 	public void add(String name, String polynomial) throws IllegalArgumentException{
 		if (list.hasName(name))
 			throw new IllegalArgumentException("The provided name has already been taken");
-		else list.addNode(name, polynomial);
+		else {
+			list.addNode(name, polynomial);
+		}
 	}
 	
 	/*
@@ -80,5 +82,7 @@ public class PolyModel {
 		return list.getSize();
 	}
 	
-	
+	public void printList() {
+		list.printList();
+	}
 }

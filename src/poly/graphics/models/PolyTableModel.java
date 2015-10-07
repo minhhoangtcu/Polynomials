@@ -29,8 +29,9 @@ public class PolyTableModel extends AbstractTableModel {
 
     public Object getValueAt(int row, int col) {
     	String output = null;
-    	if (col == 0)
+    	if (col == 0) {
     		output = model.getName(row);
+    	}
     	else if (col == 1)
     		output = model.getPoly(row);
         return output;

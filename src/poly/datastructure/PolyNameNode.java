@@ -41,7 +41,7 @@ public class PolyNameNode implements PolyNameNodeInterface {
 			firstRightNode = p;
 			lastRightNode = p;
 			p.nextNode = firstRightNode;
-			System.out.printf("Added first node(%s) into the list%n", p.toString());
+			System.out.printf("%s: Added first node(%s) into the list%n", polynomial, p.toString());
 		}
 		else {
 			PolyNode current = firstRightNode;
@@ -60,7 +60,7 @@ public class PolyNameNode implements PolyNameNodeInterface {
 				p.nextNode = firstRightNode;
 				lastRightNode.nextNode = p;
 				firstRightNode = p;
-				System.out.printf("Inserted %s to the first slot in the list%n", p.toString());
+				System.out.printf("%s: Inserted %s to the first slot in the list%n", polynomial, p.toString());
 			}
 			
 			// CASE2: The rests
@@ -89,10 +89,10 @@ public class PolyNameNode implements PolyNameNodeInterface {
 				//CASE3: The last node
 				if (current == firstRightNode){
 					lastRightNode = p;
-					System.out.printf("Inserted %s to the last slot in the list%n", p.toString());
+					System.out.printf("%s: Inserted %s to the last slot in the list%n", polynomial, p.toString());
 				}
 				else 
-					System.out.printf("Inserted %s between %s and %s%n", p.toString(), previous.toString(), current.toString());
+					System.out.printf("%s: Inserted %s between %s and %s%n", polynomial, p.toString(), previous.toString(), current.toString());
 			}
 			
 		}
