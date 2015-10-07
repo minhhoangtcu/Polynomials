@@ -14,7 +14,7 @@ public class Addition {
 		else if (first.isEmpty()) return second;
 		else if (second.isEmpty()) return first;
 		else {
-			PolyNameNode merged = mergePoly(first, second);
+			PolyNameNode merged = mergePolyPositive(first, second);
 			return merged;
 		}
 	}
@@ -22,7 +22,7 @@ public class Addition {
 	/*
 	 * Merge two PolyName nodes together without considering anything
 	 */
-	private static PolyNameNode mergePoly(PolyNameNode p1, PolyNameNode p2) {
+	private static PolyNameNode mergePolyPositive(PolyNameNode p1, PolyNameNode p2) {
 		String newPoly = p1.getRawPolynomial() + " + " + p2.getRawPolynomial();
 		String newName = p1.getPolyName() + "+" + p2.getPolyName();
 		PolyList list = new PolyList(); // For the sake of using a method within the poly list
