@@ -11,5 +11,9 @@ public class PolyMath {
 	public static PolyNameNode subtract(PolyNameNode first, PolyNameNode second) {
 		return Subtraction.sub(first, second);
 	}
+	
+	public static PolyNameNode multiply(PolyNameNode first, PolyNameNode second) {
+		return Multiply.multiply(first, second);
+	}
 
 }
