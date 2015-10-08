@@ -28,10 +28,6 @@ public class PolyList {
 			current = current.getDownPtr();
 		} while (current != firstNode);
 		System.out.println("**************************************************");
-		
-		for (int j = 0; j < getSize(); j++) {
-			System.out.println(j + "\t name: " + getName(j) + "\t poly: " + getPoly(j));
-		}
 	}
 	
 	/*
@@ -330,8 +326,12 @@ public class PolyList {
 		return lastNode;
 	}
 	
-	public String getPoly(int i) throws IndexOutOfBoundsException {
+	public String getFormedPoly(int i) throws IndexOutOfBoundsException {
 		return getNameNode(i).getPolynomial();
+	}
+	
+	public String getRawPoly(int i) throws IndexOutOfBoundsException {
+		return getNameNode(i).getRawPolynomial();
 	}
 	
 	public PolyNameNode getPoly(String name) throws IllegalArgumentException {

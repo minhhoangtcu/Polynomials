@@ -41,7 +41,7 @@ public class PolyNameNode implements PolyNameNodeInterface {
 			firstRightNode = p;
 			lastRightNode = p;
 			p.nextNode = firstRightNode;
-			System.out.printf("%s: Added first node(%s) into the list%n", polynomial, p.toString());
+			System.out.printf("%s: Added first node(%s) into the list%n", name, p.toString());
 		}
 		else {
 			PolyNode current = firstRightNode;
@@ -60,11 +60,12 @@ public class PolyNameNode implements PolyNameNodeInterface {
 				p.nextNode = firstRightNode;
 				lastRightNode.nextNode = p;
 				firstRightNode = p;
-				System.out.printf("%s: Inserted %s to the first slot in the list%n", polynomial, p.toString());
+				System.out.printf("%s: Inserted %s to the first slot in the list%n", name, p.toString());
 			}
 			
 			// CASE2: The rests
 			else {
+				previous = current;
 				current = firstRightNode.nextNode;
 				sumOfCurrent = current.sumOfPower();
 				/*
@@ -89,10 +90,10 @@ public class PolyNameNode implements PolyNameNodeInterface {
 				//CASE3: The last node
 				if (current == firstRightNode){
 					lastRightNode = p;
-					System.out.printf("%s: Inserted %s to the last slot in the list%n", polynomial, p.toString());
+					System.out.printf("%s: Inserted %s to the last slot in the list%n", name, p.toString());
 				}
 				else 
-					System.out.printf("%s: Inserted %s between %s and %s%n", polynomial, p.toString(), previous.toString(), current.toString());
+					System.out.printf("%s: Inserted %s between %s and %s%n", name, p.toString(), previous.toString(), current.toString());
 			}
 			
 		}
@@ -120,6 +121,9 @@ public class PolyNameNode implements PolyNameNodeInterface {
 				if (output != "") { // If we are inserting the first polynomial, we do not need to include + or - upfront
 					if (coeff < 0) output += (" - ");
 					else if (coeff > 0) output += (" + ");
+				}
+				else if (coeff < 0) {
+					output += "-";
 				}
 				int x = currentNode.getXPower();
 				int y = currentNode.getYPower();
@@ -173,6 +177,7 @@ public class PolyNameNode implements PolyNameNodeInterface {
 	}
 
 	public String getRawPolynomial() {
+		setRawForm();
 		return polynomial;
 	}
 
@@ -181,7 +186,6 @@ public class PolyNameNode implements PolyNameNodeInterface {
 		PolyNode current = iter.getCurrent();
 		String newRaw = "";
 		do {
-			int coeff = current.getCoeff();
 			if (newRaw != "")
 				newRaw += " + ";
 			

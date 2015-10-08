@@ -68,8 +68,12 @@ public class PolyModel {
 		return list.getPoly(name);
 	}
 	
-	public String getPoly(int i) {
-		return list.getPoly(i);
+	public String getRawPoly(int i) {
+		return list.getFormedPoly(i);
+	}
+	
+	public String getFormedPoly(int i) {
+		return list.getFormedPoly(i);
 	}
 	
 	public String getName(int i) {

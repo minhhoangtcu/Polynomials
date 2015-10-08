@@ -25,7 +25,7 @@ public class ControllerDisplay implements MouseListener{
 	
 	public void setDbDisplayPoly() {
 		int id = view.getSelectedPoly();
-		String poly = model.getPoly(id);
+		String poly = model.getFormedPoly(id);
 		view.setDbDisplay("Displaying: " + poly);
 	}
 	

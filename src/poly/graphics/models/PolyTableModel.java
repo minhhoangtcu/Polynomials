@@ -33,7 +33,7 @@ public class PolyTableModel extends AbstractTableModel {
     		output = model.getName(row);
     	}
     	else if (col == 1)
-    		output = model.getPoly(row);
+    		output = model.getFormedPoly(row);
         return output;
     }
 }
