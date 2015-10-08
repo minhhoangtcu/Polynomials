@@ -1,11 +1,11 @@
 package poly.datastructure;
 
+import java.io.Serializable;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
-import org.junit.internal.Throwables;
 
-public class PolyList {
+public class PolyList implements Serializable {
 	
 	private PolyNameNode firstNode, lastNode;
 	

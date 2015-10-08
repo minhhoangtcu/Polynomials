@@ -97,4 +97,8 @@ public class PolyModel {
 	public void printList() {
 		list.printList();
 	}
+	
+	public PolyList getList() {
+		return list;
+	}
 }

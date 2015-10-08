@@ -3,6 +3,9 @@ package poly.graphics.controllers;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JFileChooser;
 
@@ -21,8 +24,10 @@ public class ControllerLoad implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		JFileChooser fc = new JFileChooser();
-		fc.setCurrentDirectory(new File(System.getProperty("user.home")));
+		
+		
+		JFileChooser fc = new JFileChooser(new File("C:\\"));
+		//fc.setCurrentDirectory(new File(System.getProperty("user.home")));
 		int returnVal = fc.showOpenDialog(view);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 		    File selectedFile = fc.getSelectedFile();
