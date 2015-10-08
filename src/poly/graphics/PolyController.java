@@ -41,7 +41,7 @@ public class PolyController {
 		conSub = new ControllerSubtraction(view, model);
 		
 		view.btnSolve.addMouseListener(conSolve);
-		view.btnSave.addMouseListener(conSave);
+		view.btnStore.addMouseListener(conSave);
 		view.btnEvaluate.addMouseListener(conEvaluate);	
 		view.btnDisplay.addMouseListener(conDisplay);
 		view.btnLoadDb.addMouseListener(conLoad);

@@ -37,7 +37,7 @@ public class PolyView extends JFrame {
 	
 	// A set of components that we want to give access to the controller (to add listener to)
 	private JTable tableData;
-	JButton btnSave, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb, btnSolve, btnAdd, btnSubtract, btnMultiply;
+	JButton btnStore, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb, btnSolve, btnAdd, btnSubtract, btnMultiply;
 	private JTextField arithInput1;
 	private JTextField arithInput2;
 	
@@ -92,8 +92,8 @@ public class PolyView extends JFrame {
 		panelInput.add(textFieldPolyInput, "cell 1 1,alignx right,aligny center");
 		textFieldPolyInput.setColumns(80);
 		
-		btnSave = new JButton("Save");
-		panelInput.add(btnSave, "cell 2 1,alignx left,aligny top");
+		btnStore = new JButton("Store");
+		panelInput.add(btnStore, "cell 2 1,alignx left,aligny top");
 		
 		lblInputFeedback = new JLabel("Feedback");
 		lblInputFeedback.setVisible(false);
