@@ -54,9 +54,9 @@ public class ControllerSave implements MouseListener {
 					e.printStackTrace();
 					view.setIODisplay(e.getMessage());
 				}
-				view.setVisibleIO(true);
 			}
 		}
+		view.setVisibleIO(true);
 	}
 
 	@Override
