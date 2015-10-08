@@ -7,10 +7,10 @@
  * 	- Input a polynomial and save it into a database
  * 	- Evaluate a polynomial with the provided value of x, y, and z
  *  - Do arithmetic computation (Add, Subtract and Multiply) on two polynomials
- *  - Store the database of polynomials and load it to use in other time 
+ *  - Store the database of polynomials and load it to use in other time
+ *   
+ * For more information, please refer to the user guide.
  * 
- * Version: 0.1
- * Description: This version has only functioning GUI
  */
 package poly.graphics;
 
@@ -25,6 +25,7 @@ public class MainMenu {
 		model = new PolyModel(this);
 		view = new PolyView(this);
 		control = new PolyController(this);
+		view.setTitle("Polynomials Calculator - Minh Hoang");
 		view.setVisible(true);
 	}
 	
