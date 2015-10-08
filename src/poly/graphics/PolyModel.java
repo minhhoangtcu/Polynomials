@@ -69,7 +69,7 @@ public class PolyModel {
 	}
 	
 	public String getRawPoly(int i) {
-		return list.getFormedPoly(i);
+		return list.getRawPoly(i);
 	}
 	
 	public String getFormedPoly(int i) throws IndexOutOfBoundsException{
