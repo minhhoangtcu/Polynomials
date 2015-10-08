@@ -2,12 +2,13 @@ package poly.datastructure;
 
 public class PolyNameIterator implements PolyNameIteratorInterface {
 
-	PolyNameNode list;
-	PolyNode current;
-	PolyNode previous;
+	private PolyNameNode list;
+	private PolyNode current, previous;
 	
 	public PolyNameIterator(PolyNameNode node) {
 		this.list = node;
+		current = list.getRightPtr();
+		previous = list.getLastRightPtr();
 	}
 
 	@Override
@@ -18,6 +19,7 @@ public class PolyNameIterator implements PolyNameIteratorInterface {
 
 	@Override
 	public PolyNode next() {
+		previous = current;
 		current = current.nextNode;
 		return current;
 	}
@@ -27,4 +29,7 @@ public class PolyNameIterator implements PolyNameIteratorInterface {
 		return previous;
 	}
 
+	public PolyNode getCurrent() {
+		return current;
+	}
 }

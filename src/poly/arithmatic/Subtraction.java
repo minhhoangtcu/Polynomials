@@ -8,7 +8,7 @@ import poly.datastructure.PolyNode;
 public class Subtraction {
 	
 	/*
-	 * Substracting the first PolyNameNode by the second Node.
+	 * Subtracting the first PolyNameNode by the second Node.
 	 */
 	public static PolyNameNode sub(PolyNameNode first, PolyNameNode second) {
 		PolyNameNode negSecond = neg(second);
@@ -25,8 +25,8 @@ public class Subtraction {
 	 * Merge two PolyName nodes together without considering anything
 	 */
 	private static PolyNameNode mergePolyNegative(PolyNameNode p1, PolyNameNode p2) {
-		String newPoly = p1.getRawPolynomial() + " - " + p2.getRawPolynomial();
-		String newName = p1.getPolyName() + "-" + p2.getPolyName();
+		String newPoly = p1.getRawPolynomial() + " + " + p2.getRawPolynomial();
+		String newName = p1.getPolyName() + p2.getPolyName();
 		PolyList list = new PolyList(); // For the sake of using a method within the poly list
 		PolyNameNode newNameNode = list.createNameNode(newName, newPoly);
 		return newNameNode;
@@ -37,14 +37,14 @@ public class Subtraction {
 	 */
 	public static PolyNameNode neg(PolyNameNode node) {
 		PolyNameIterator iter = new PolyNameIterator(node);
-		PolyNode current = iter.next();
+		PolyNode current = iter.getCurrent();
 		PolyNameNode newNameNode = new PolyNameNode("neg" + node.getPolyName(), "");
 		do {
 			PolyNode newNode = new PolyNode(-current.getCoeff(), current.getXPower(), current.getYPower(), current.getZPower());
 			newNameNode.addNode(newNode);
 			current = iter.next();
-		} while (iter.isFirst(current));
-		newNameNode.refreshRawForm();
+		} while (!iter.isFirst(current));
+		newNameNode.setRawForm();
 		return newNameNode;
 	}
 }

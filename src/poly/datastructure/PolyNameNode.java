@@ -53,7 +53,7 @@ public class PolyNameNode implements PolyNameNodeInterface {
 			// Check with the first node. If lower, insert at first place
 			if (current.isSamePowers(p)) { // CHECK IF EQUAL POWERS
 				current.setCoeff(p.getCoeff() + current.getCoeff());
-				System.out.println("Found similar polynomials, adding the coeff");
+				System.out.println("Found similar polynomials, adding/subing the coeff");
 				return;
 			}
 			if (sumOfInstertingNode < sumOfCurrent) { // CHECK IF POWERS LOWER
@@ -176,17 +176,21 @@ public class PolyNameNode implements PolyNameNodeInterface {
 		return polynomial;
 	}
 
-	public void refreshRawForm() {
+	public void setRawForm() {
 		PolyNameIterator iter = new PolyNameIterator(this);
-		PolyNode current = iter.next();
+		PolyNode current = iter.getCurrent();
 		String newRaw = "";
 		do {
+			int coeff = current.getCoeff();
+			if (newRaw != "")
+				newRaw += " + ";
+			
 			newRaw += current.getCoeff();
 			newRaw += "*x^" + current.getXPower();
 			newRaw += "*y^" + current.getYPower();
 			newRaw += "*z^" + current.getZPower();
 			current = iter.next();
-		} while (iter.isFirst(current));
+		} while (!iter.isFirst(current));
 		polynomial = newRaw;
 	}
 }

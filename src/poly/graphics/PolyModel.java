@@ -47,7 +47,7 @@ public class PolyModel {
 		PolyNameIterator iter = new PolyNameIterator(poly);
 		int output = 0;
 		
-		PolyNode current = poly.getRightPtr();
+		PolyNode current = iter.getCurrent();
 		do {
 			int coeff = current.getCoeff();
 			int xP = current.getXPower();

@@ -14,6 +14,9 @@ public class PolyList {
 		lastNode = null;
 	}
 	
+	/*
+	 * Print the list of nodes for testing
+	 */
 	public void printList() {
 		PolyNameNode current = firstNode;
 		int i = 0;
@@ -53,6 +56,7 @@ public class PolyList {
 	 * 	The for loop will run to index i (the position of the node we want to remove)
 	 * 	We then check if it is the last node or not. If yes, set the previous of the removing node to last node.
 	 * 	Else, we remove like usual.
+	 * @param i the index or position of the removing node
 	 */
 	public void remove(int i) throws NoSuchElementException, IndexOutOfBoundsException{
 		int size = getSize();
@@ -165,7 +169,7 @@ public class PolyList {
 	public PolyNameNode createNameNode(String name, String polynomial) throws IllegalArgumentException {
 		checkAllPolynomials(polynomial); //The program will continue if no error found, else it will throw error.
 		PolyNameNode nameNode = new PolyNameNode(name, polynomial);
-		StringTokenizer st = new StringTokenizer(polynomial, "(+|-)");
+		StringTokenizer st = new StringTokenizer(polynomial, " + ");
 		int numberOfPolys = st.countTokens();
 		for (int i = 0; i < numberOfPolys; i++) {
 			String eachPoly = st.nextToken();
@@ -198,7 +202,7 @@ public class PolyList {
 	 * Check if the String input is a valid polynomial or not
 	 */
 	protected boolean isValid(String polynomial) {
-		StringTokenizer st = new StringTokenizer(polynomial, "(+|-)");
+		StringTokenizer st = new StringTokenizer(polynomial, " + ");
 		int numberOfPolys = st.countTokens();
 		
 		for (int i = 0; i < numberOfPolys; i++) {
@@ -217,7 +221,7 @@ public class PolyList {
 	 * Check the validity of the input as many polynomials (a series of them)
 	 */
 	protected void checkAllPolynomials(String polynomial) throws IllegalArgumentException {
-		StringTokenizer st = new StringTokenizer(polynomial, "(+|-)");
+		StringTokenizer st = new StringTokenizer(polynomial, " +) ");
 		int numberOfPolys = st.countTokens();
 		
 		for (int i = 0; i < numberOfPolys; i++) {
