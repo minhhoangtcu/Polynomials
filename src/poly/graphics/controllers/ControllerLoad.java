@@ -25,7 +25,6 @@ public class ControllerLoad implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
-		
 		JFileChooser fc = new JFileChooser(new File("C:\\"));
 		//fc.setCurrentDirectory(new File(System.getProperty("user.home")));
 		int returnVal = fc.showOpenDialog(view);

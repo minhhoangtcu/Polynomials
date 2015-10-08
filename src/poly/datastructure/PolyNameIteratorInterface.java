@@ -5,4 +5,5 @@ public interface PolyNameIteratorInterface {
 	public boolean isFirst(PolyNode node);
 	public PolyNode next();
 	public PolyNode getPrevious();
+	public PolyNode getCurrent();
 }

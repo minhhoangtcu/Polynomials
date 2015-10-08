@@ -29,6 +29,7 @@ public class PolyNameIterator implements PolyNameIteratorInterface {
 		return previous;
 	}
 
+	@Override
 	public PolyNode getCurrent() {
 		return current;
 	}
