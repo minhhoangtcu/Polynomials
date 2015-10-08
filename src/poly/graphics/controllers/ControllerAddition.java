@@ -34,7 +34,7 @@ public class ControllerAddition implements MouseListener  {
 		PolyNameNode node1 = model.getPolyNameNode(name1);
 		PolyNameNode node2 = model.getPolyNameNode(name2);
 		PolyNameNode added = PolyMath.add(node1, node2);
-		view.setArithResult(added.getPolynomial());
+		view.setArithResult(added.getRawPolynomial());
 		view.clearArithInput1Text();
 		view.clearArithInput2Text();
 	}

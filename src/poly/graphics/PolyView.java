@@ -37,9 +37,11 @@ public class PolyView extends JFrame {
 	
 	// A set of components that we want to give access to the controller (to add listener to)
 	private JTable tableData;
-	JButton btnStore, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb, btnSolve, btnAdd, btnSubtract, btnMultiply;
+	JButton btnStore, btnEvaluate, btnDisplay, btnDelete, btnLoadDb, btnSaveDb, btnSolve, btnAdd, btnSubtract, btnMultiply, btnStoreArith;
 	private JTextField arithInput1;
 	private JTextField arithInput2;
+	private JTextField textFieldArithmeticName;
+	private JLabel lblNewLabel;
 	
 	/**
 	 * Create the frame.
@@ -50,7 +52,7 @@ public class PolyView extends JFrame {
 		
 		// Set up the main menu
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 900, 600);
+		setBounds(100, 100, 1000, 600);
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -204,14 +206,14 @@ public class PolyView extends JFrame {
 		// ARITHMETIC SECTION
 		JPanel arithmetic = new JPanel();
 		contentPane.add(arithmetic, "cell 0 2,grow");
-		arithmetic.setLayout(new MigLayout("", "[100%]", "[25%][30%][30%][15%]"));
+		arithmetic.setLayout(new MigLayout("", "[90%][10%,grow]", "[25%][30%][30%][15%]"));
 		
 		JLabel lblArithmetic = new JLabel("Arithmetic");
 		lblArithmetic.setBackground(Color.LIGHT_GRAY);
 		lblArithmetic.setOpaque(true);
 		lblArithmetic.setHorizontalAlignment(SwingConstants.CENTER);
 		lblArithmetic.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		arithmetic.add(lblArithmetic, "cell 0 0,grow");
+		arithmetic.add(lblArithmetic, "cell 0 0 2 1,grow");
 		
 		JPanel panelArithmeticDecision = new JPanel();
 		arithmetic.add(panelArithmeticDecision, "cell 0 1,grow");
@@ -239,14 +241,24 @@ public class PolyView extends JFrame {
 		btnMultiply = new JButton("Multiply");
 		panelArithmeticDecision.add(btnMultiply);
 		
+		btnStoreArith = new JButton("Store");
+		arithmetic.add(btnStoreArith, "cell 1 1,alignx center");
+		
 		textFieldArithmeticResult = new JTextField();
 		arithmetic.add(textFieldArithmeticResult, "cell 0 2,grow");
 		textFieldArithmeticResult.setColumns(10);
 		
 		lblArithFeedback = new JLabel("Feedback");
 		lblArithFeedback.setVisible(false);
+		
+		textFieldArithmeticName = new JTextField();
+		arithmetic.add(textFieldArithmeticName, "cell 1 2,grow");
+		textFieldArithmeticName.setColumns(10);
 		lblArithFeedback.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		arithmetic.add(lblArithFeedback, "cell 0 3,alignx center,aligny center");
+		
+		lblNewLabel = new JLabel("Name");
+		arithmetic.add(lblNewLabel, "cell 1 3,alignx center,aligny top");
 	}
 
 	public String getPolynomialInput() {
@@ -331,5 +343,14 @@ public class PolyView extends JFrame {
 	}
 	public void clearArithInput1Text() {
 		arithInput1.setText("");
+	}
+	public String getArithName() {
+		return textFieldArithmeticName.getText();
+	}
+	public void setTextFieldArithmeticName(String text) {
+		textFieldArithmeticName.setText(text);
+	}
+	public String getArithResult() {
+		return textFieldArithmeticResult.getText();
 	}
 }

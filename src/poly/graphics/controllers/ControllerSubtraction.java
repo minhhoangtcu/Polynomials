@@ -34,7 +34,7 @@ public class ControllerSubtraction implements MouseListener {
 		PolyNameNode node1 = model.getPolyNameNode(name1);
 		PolyNameNode node2 = model.getPolyNameNode(name2);
 		PolyNameNode subed = PolyMath.subtract(node1, node2);
-		view.setArithResult(subed.getPolynomial());
+		view.setArithResult(subed.getRawPolynomial());
 		view.clearArithInput1Text();
 		view.clearArithInput2Text();
 	}

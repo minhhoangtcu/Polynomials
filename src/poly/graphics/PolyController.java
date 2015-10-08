@@ -11,6 +11,7 @@ import poly.graphics.controllers.ControllerLoad;
 import poly.graphics.controllers.ControllerMultiply;
 import poly.graphics.controllers.ControllerSave;
 import poly.graphics.controllers.ControllerStore;
+import poly.graphics.controllers.ControllerStoreArith;
 import poly.graphics.controllers.ControllerSolve;
 import poly.graphics.controllers.ControllerSubtraction;
 
@@ -29,6 +30,7 @@ public class PolyController {
 	private ControllerAddition conAdd;
 	private ControllerSubtraction conSub;
 	private ControllerMultiply conMul;
+	private ControllerStoreArith conStoreArith;
 	
 	public PolyController(MainMenu mainMenu) {
 		main = mainMenu; 
@@ -45,6 +47,7 @@ public class PolyController {
 		conSub = new ControllerSubtraction(view, model);
 		conSave = new ControllerSave(view, model);
 		conMul = new ControllerMultiply(view, model);
+		conStoreArith = new ControllerStoreArith(view, model);
 		
 		view.btnSolve.addMouseListener(conSolve);
 		view.btnStore.addMouseListener(conStore);
@@ -57,5 +60,6 @@ public class PolyController {
 		view.btnLoadDb.addMouseListener(conLoad);
 		view.btnSaveDb.addMouseListener(conSave);
 		view.btnMultiply.addMouseListener(conMul);
+		view.btnStoreArith.addMouseListener(conStoreArith);
 	}
 }

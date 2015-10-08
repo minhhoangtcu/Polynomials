@@ -34,7 +34,7 @@ public class ControllerMultiply implements MouseListener {
 		PolyNameNode node1 = model.getPolyNameNode(name1);
 		PolyNameNode node2 = model.getPolyNameNode(name2);
 		PolyNameNode multi = PolyMath.multiply(node1, node2);
-		view.setArithResult(multi.getPolynomial());
+		view.setArithResult(multi.getRawPolynomial());
 		view.clearArithInput1Text();
 		view.clearArithInput2Text();
 	}
