@@ -28,5 +28,4 @@ public class ArithmaticHelper {
 			throw new IllegalArgumentException(String.format("%s is not a name of a polynomial in the list.", name2));
 		else return true;
 	}
-
 }

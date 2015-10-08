@@ -34,6 +34,24 @@ public class AirthTest {
 	}
 	
 	@Test
+	public void testMulti4() {
+		PolyList list = new PolyList();
+		PolyNameNode node1 = list.createNameNode("a", "6*x^4*y^5*z^3");
+		PolyNameNode node2 = list.createNameNode("b", "6*x^2*y^2*z^2 + 2*x^4*y^5*z^3");
+		PolyNameNode result = PolyMath.multiply(node1, node2);
+		System.out.println(result.getPolynomial());
+	}
+	
+	@Test
+	public void testMulti5() {
+		PolyList list = new PolyList();
+		PolyNameNode node1 = list.createNameNode("a", "6*x^4*y^5*z^3");
+		PolyNameNode node2 = list.createNameNode("b", "10*x^0*y^1*z^3 + 6*x^4*y^5*z^3");
+		PolyNameNode result = PolyMath.multiply(node1, node2);
+		System.out.println(result.getPolynomial());
+	}
+	
+	@Test
 	public void testSub1() {
 		PolyList list = new PolyList();
 		PolyNameNode node1 = list.createNameNode("a", "6*x^4*y^5*z^3");

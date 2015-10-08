@@ -12,7 +12,7 @@ public class Multiply {
 		PolyNameNode newNameNode = new PolyNameNode(String.format("%sMultiply%s", first.getPolyName(), second.getPolyName()), "");
 		
 		PolyNode fNode = fIter.getCurrent();
-		PolyNode sNode = fIter.getCurrent();
+		PolyNode sNode = sIter.getCurrent();
 		do {
 			do {
 				
