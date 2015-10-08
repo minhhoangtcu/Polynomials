@@ -101,4 +101,8 @@ public class PolyModel {
 	public PolyList getList() {
 		return list;
 	}
+	
+	public void setList(PolyList list) {
+		this.list = list;
+	}
 }

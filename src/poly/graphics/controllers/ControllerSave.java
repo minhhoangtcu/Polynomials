@@ -40,6 +40,7 @@ public class ControllerSave implements MouseListener {
 					BufferedWriter writer = new BufferedWriter(new FileWriter(selectedFile));
 					PolyNameNode current = list.getFirstNode();
 					do {
+						writer.write(current.getPolyName() + "\n");
 						writer.write(current.getRawPolynomial() + "\n");
 						current = current.getDownPtr();
 					} while (current != list.getFirstNode());

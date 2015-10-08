@@ -2,13 +2,15 @@ package poly.graphics.controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 
 import javax.swing.JFileChooser;
 
+import poly.datastructure.PolyList;
 import poly.graphics.PolyModel;
 import poly.graphics.PolyView;
 
@@ -24,18 +26,32 @@ public class ControllerLoad implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		JFileChooser fc = new JFileChooser();
+		fc.setDialogTitle("Select a database saved by this application");
 		
-		JFileChooser fc = new JFileChooser(new File("C:\\"));
-		//fc.setCurrentDirectory(new File(System.getProperty("user.home")));
 		int returnVal = fc.showOpenDialog(view);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 		    File selectedFile = fc.getSelectedFile();
-		    view.setIODisplay("Selected file: " + selectedFile.getAbsolutePath());
-		    view.setVisibleIO(true);
-		}
-		else {
-			view.setIODisplay("Selected another file");
-			view.setVisibleIO(true);
+		    try {
+				BufferedReader reader = new BufferedReader(new FileReader(selectedFile));
+				PolyList list = new PolyList();
+				
+				String name = null;
+				while ((name = reader.readLine()) != null) {
+					String poly = reader.readLine();
+					list.addNode(name, poly);
+				}
+				
+				reader.close();
+				view.repaintEverything();
+				model.setList(list);
+				view.setIODisplay("Selected file: " + selectedFile.getAbsolutePath());
+				view.setVisibleIO(true);
+			} catch (FileNotFoundException e1) {
+				view.setIODisplay(e1.getLocalizedMessage());
+			} catch (IOException e1) {
+				view.setIODisplay(e1.getMessage());
+			}
 		}
 	}
 
