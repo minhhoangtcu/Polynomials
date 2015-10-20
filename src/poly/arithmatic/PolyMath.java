@@ -15,5 +15,9 @@ public class PolyMath {
 	public static PolyNameNode multiply(PolyNameNode first, PolyNameNode second) {
 		return Multiply.multiply(first, second);
 	}
+	
+	public static PolyNameNode devide(PolyNameNode first, PolyNameNode second) {
+		return Division.devideBy(first, second);
+	}
 
 }

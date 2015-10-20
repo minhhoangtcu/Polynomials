@@ -7,6 +7,15 @@ import poly.datastructure.PolyNameNode;
 public class AirthTest {
 
 	@Test
+	public void testDivide1() {
+		PolyList list = new PolyList();
+		PolyNameNode node1 = list.createNameNode("a", "6*x^4*y^5*z^3");
+		PolyNameNode node2 = list.createNameNode("b", "6*x^4*y^5*z^3");
+		PolyNameNode result = PolyMath.devide(node1, node2);
+		System.out.println(result.getPolynomial());
+	}
+	
+	@Test
 	public void testMulti1() {
 		PolyList list = new PolyList();
 		PolyNameNode node1 = list.createNameNode("a", "6*x^4*y^5*z^3");
