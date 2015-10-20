@@ -17,9 +17,9 @@ public class Multiply {
 			do {
 				
 				int newCoeff = fNode.getCoeff() * sNode.getCoeff();
-				int newX = fNode.getXPower() * sNode.getXPower();
-				int newY = fNode.getYPower() * sNode.getYPower();
-				int newZ = fNode.getZPower() * sNode.getZPower();
+				int newX = fNode.getXPower() + sNode.getXPower();
+				int newY = fNode.getYPower() + sNode.getYPower();
+				int newZ = fNode.getZPower() + sNode.getZPower();
 				PolyNode newNode = new PolyNode(newCoeff, newX, newY, newZ);
 				newNameNode.addNode(newNode);
 				
